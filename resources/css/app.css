@@ -13,8 +13,23 @@
     html {
         scroll-behavior: smooth;
     }
-
+    
     body {
         font-family: "Inter", sans-serif;
+        background-color: #0C0B24;
+    }
+}
+
+@layer components {
+    .text-gradient {
+        color: transparent; 
+        background: linear-gradient(to top, #2E236C, #C8ACD6); 
+        -webkit-background-clip: text; 
+        background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+    }
+
+    .button-gradient {
+        background: linear-gradient(to right, #2E236C, #433D8B);
     }
 }
