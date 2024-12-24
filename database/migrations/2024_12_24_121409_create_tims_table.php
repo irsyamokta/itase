@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('tims', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('leader_id')->constrained('users')->cascadeOnDelete();
+            $table->string('tim_name');
+            $table->string('category');
             $table->timestamps();
         });
     }
