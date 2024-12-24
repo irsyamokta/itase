@@ -1,47 +1,56 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{ asset('assets/img/img-robot-2.png') }}">
+    <title>Login</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+<body>
+    <section class="h-[100vh] flex lg:flex-row">
+        <div class="hidden w-full lg:w-1/2 lg:flex flex-col justify-center items-center px-16 py-16">
+            <a class="flex justify-center" target="_blank">
+                <img class="sm:w-[50%] lg:w-[70%]" src="{{ asset('assets/img/img-robot-1.png') }}" alt="img-login">
+            </a>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="w-full lg:w-1/2 flex flex-col justify-center items-center py-10 gap-10">
+            <h1 class="md:mb-4 text-3xl font-semibold tracking-wide text-white md:text-5xl">Login</h1>
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                <div class="flex flex-col justify-center items-center gap-5 w-[300px]">
+                    <div class="w-full">
+                        <div class="relative">
+                            <input name="email" type="text" id="email" value="{{ old('email') }}" required
+                                class="peer w-full bg-dark placeholder:text-white text-white text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-dark hover:border-slate-300 shadow-sm focus:shadow" />
+                            <label for="email"
+                                class="absolute cursor-text bg-dark px-1 left-2.5 top-3 text-slate-400 text-sm transition-all transform origin-left peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-slate-400 peer-focus:scale-90">
+                                Email
+                            </label>
+                        </div>
+                    </div>
+                    <div class="w-full">
+                        <div class="relative">
+                            <input name="password" type="password" id="password" autocomplete="current-password" required
+                                class="peer w-full bg-dark placeholder:text-white text-white text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 ease focus:outline-none focus:border-dark hover:border-slate-300 shadow-sm focus:shadow" />
+                            @if ($errors->has('email'))
+                                <p class="mt-3 text-red-500 text-xs">{{ $errors->first('email') }}</p>
+                            @endif
+                            <label for="password"
+                                class="absolute cursor-text bg-dark px-1 left-2.5 top-3 text-slate-400 text-sm transition-all transform origin-left peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-slate-400 peer-focus:scale-90">
+                                Password
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full h-10 mt-5 rounded-md button-gradient text-white hover:bg-secondary">Masuk</button>
+                    <p class="mt-5 text-white">Belum punya akun? <a href="{{ route('register') }}" class="text-secondary font-bold">Daftar</a></p>
+                </div>
+            </form>
         </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+</body>
+</html>

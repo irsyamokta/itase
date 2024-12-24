@@ -6,7 +6,7 @@
         <div class="flex md:gap-2 md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
             <a href="{{ route('login') }}">
                 <button type="button"
-                    class="text-white button-gradient border-2 border-primary hover:bg-slate-200 font-medium rounded-lg text-sm px-4 py-2 text-center">Masuk</button>
+                    class="text-white button-gradient border-2 border-primary font-medium rounded-lg text-sm px-4 py-2 text-center">Masuk</button>
             </a>
             <button data-collapse-toggle="navbar-sticky" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-gray-200"
@@ -41,7 +41,7 @@
                 </li>
                 <li class="md:hidden block">
                     <a href="{{ route('register') }}"
-                        class="block text-center py-2 px-3 text-white rounded button-gradient hover:bg-yellow-500 md:hover:bg-transparent md:hover:text-secondary md:text-white md:p-0">Daftar Sekarang</a>
+                        class="block text-center py-2 px-3 text-white rounded button-gradient md:hover:bg-transparent md:hover:text-secondary md:text-white md:p-0">Daftar Sekarang</a>
                 </li>
             </ul>
         </div>

@@ -84,9 +84,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-    {{-- <div class="absolute -right-60 -bottom-25 md:-right-50 lg:-right-96 lg:-bottom-50 z-10">
-        <img src="{{ asset('assets/img/img-ornament.png') }}" alt="Hero Image" class="w-[30rem] md:w-[40rem] lg:w-[50rem]">
-    </div> --}}
 </section>
