@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('tims', function (Blueprint $table) {
             $table->id();
             $table->foreignId('leader_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete()->nullable();
             $table->string('tim_name');
-            $table->string('category');
+            $table->boolean('registered')->nullable();
             $table->timestamps();
         });
     }

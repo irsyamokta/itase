@@ -17,14 +17,12 @@
     body {
         font-family: "Inter", sans-serif;
         background-color: #0c0b24;
-    }
-
-    body {
         --sb-track-color: #232e33;
         --sb-thumb-color: #c8acd6;
         --sb-size: 6px;
-    }
 
+    }
+        
     body::-webkit-scrollbar {
         width: var(--sb-size);
     }
