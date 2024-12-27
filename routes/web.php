@@ -15,8 +15,8 @@ Route::middleware(['auth', 'role:participant'])->group(function () {
 
     Route::get('/team/register', [HomepageController::class, 'registerTeam'])->name('team.register');
     Route::post('/team/register', [ParticipantController::class, 'store'])->name('team.store');
-    Route::get('/team/view/{id}', [ParticipantController::class, 'view'])->name('team.view');
-    Route::post('/team/update/{id}', [ParticipantController::class, 'update'])->name('team.update');
+    Route::get('/team/view/{id}', [ParticipantController::class, 'view'])->name('team.view')->middleware('verify.team.leader');
+    Route::post('/team/update/{id}', [ParticipantController::class, 'update'])->name('team.update')->middleware('verify.team.leader');
     Route::get('/team/destroy', [ParticipantController::class, 'destroy'])->name('team.destroy');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

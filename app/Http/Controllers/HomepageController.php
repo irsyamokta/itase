@@ -37,7 +37,7 @@ class HomepageController extends Controller
         if (!$tim) {
             return view('client.auth.page.team.not-registered');
         }
-        
+
         $participants = Participant::where('tim_id', $tim->id)->get();
         
         if ($tim->registered == 1) {

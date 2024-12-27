@@ -55,16 +55,16 @@ class ParticipantController extends Controller
         $tim = Tim::where('leader_id', $id)->first();
 
         if (!$tim) {
-            return view('client.auth.page.team.not-registered');
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses ke tim ini.');
         }
 
         $participants = Participant::where('tim_id', $tim->id)->get();
 
-        if ($tim->registered == 1) {
+        if ($tim->registered == 1 && $tim->leader_id == auth()->id()) {
             return view('client.auth.page.team.update', compact('tim', 'participants'));
         }
 
-        return redirect()->route('team')->with('error', 'Akses tidak valid.');
+        return redirect()->back()->with('error', 'Akses tidak valid.');
     }
 
     public function update(Request $request, $id)

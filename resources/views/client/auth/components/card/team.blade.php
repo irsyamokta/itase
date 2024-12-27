@@ -4,7 +4,7 @@
         <input type="text" placeholder="Nama tim kamu" name="tim_name" value="{{ $tim->tim_name ?? '' }}" readonly
             class="p-0 text-2xl font-bold text-black placeholder-gray-400 border-none placeholder:font-medium focus:outline-none focus:ring-0" />
         <div class="flex gap-2 md:col-span-2 justify-end">
-            <a href="{{ route('team.view', $participants[0]->tim_id) }}"
+            <a href="{{ route('team.view', Auth::user()->id) }}"
                 class="bg-primary hover:bg-secondary text-white text-center px-4 py-2 rounded-md">
                 Update
             </a>
