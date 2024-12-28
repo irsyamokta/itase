@@ -48,11 +48,11 @@
                         </th>
                         <th scope="row"
                             class="px-3 py-4 font-medium whitespace-nowrap overflow-y-auto max-w-[150px] no-scroll">
-                            {{ $row->role }}
+                            {{ $row->university }}
                         </th>
                         <th scope="row"
                             class="px-3 py-4 font-medium whitespace-nowrap overflow-y-auto max-w-[150px] no-scroll">
-                            {{ $row->university }}
+                            {{ $row->role }}
                         </th>
                         <th scope="row" class="px-3 py-4 font-medium whitespace-nowrap">
                             <a href="{{ asset('storage/' . $row->ktm) }}" class="text-purple-600 hover:underline"
