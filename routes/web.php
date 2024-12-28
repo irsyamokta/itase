@@ -25,13 +25,12 @@ Route::middleware(['auth', 'role:participant'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-    Route::get('/participants', [DashboardController::class, 'participant'])->name('participant');
-
-    Route::get('/events', [DashboardController::class, 'event'])->name('event');
-
-    Route::get('/submissions', [DashboardController::class, 'submission'])->name('submission');
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/participants', [DashboardController::class, 'participant'])->name('dashboard.participant');
+        Route::get('/events', [DashboardController::class, 'event'])->name('dashboard.event');
+        Route::get('/submissions', [DashboardController::class, 'submission'])->name('dashboard.submission');
+    });
 });
 
 require __DIR__.'/auth.php';
