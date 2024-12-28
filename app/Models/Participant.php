@@ -19,6 +19,6 @@ class Participant extends Model
 
     public function tim()
     {
-        return $this->belongsTo(Tim::class);
+        return $this->belongsTo(Tim::class, 'tim_id');
     }
 }
