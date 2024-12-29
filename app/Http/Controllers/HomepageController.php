@@ -45,7 +45,7 @@ class HomepageController extends Controller
     public function team()
     {
         $user = auth()->user();
-        $tim = Tim::where('leader_id', $user->id)->first();
+        $tim = Tim::where('leader_id', $user->id)->with('order')->first();
 
         if (!$tim) {
             return view('client.auth.page.team.not-registered');

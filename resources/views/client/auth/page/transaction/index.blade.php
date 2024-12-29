@@ -11,8 +11,8 @@
                 <main>
                     <div class="mx-auto max-w-screen-2xl p-4 md:p-5">
                         <div class="mb-5">
-                        {{-- <x-card-payment :title="$event->event_name" :price="$event->price" :banner="$event->banner" /> --}}
-                        <x-history :orders="$orders"/>
+                            <x-history :orders="$orders" :order="$order" :snapToken="$snapToken" />
+                        </div>
                     </div>
                 </main>
             </div>

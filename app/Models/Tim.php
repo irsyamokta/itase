@@ -9,6 +9,7 @@ class Tim extends Model
     protected $table = 'tims';
     protected $fillable = [
         'leader_id',
+        'order_id',
         'tim_name',
         'category',
     ];
@@ -21,5 +22,10 @@ class Tim extends Model
     public function participants()
     {
         return $this->hasMany(Participant::class);
+    }
+
+    public function order()
+    {
+        return $this->hasOne(Order::class, 'id', 'order_id');
     }
 }

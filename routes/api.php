@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParticipantController;
+use App\Http\Controllers\MidtransController;
+
+Route::post('/midtrans/notifications', [MidtransController::class, 'notification'])->name('midtrans.notification');
 
 Route::prefix('dashboard')->name('dashboard.')->group(function () {
 

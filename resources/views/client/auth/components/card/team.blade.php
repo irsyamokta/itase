@@ -8,10 +8,12 @@
                 class="bg-primary hover:bg-secondary text-white text-center px-4 py-2 rounded-md">
                 Update
             </a>
-            <a href="{{ route('team.destroy') }}"
-                class="bg-red-800 hover:bg-red-700 text-white text-center px-4 py-2 rounded-md">
-                Hapus
-            </a>
+            @if ($tim?->order?->payment_status == null)
+                <a href="{{ route('team.destroy') }}"
+                    class="bg-red-800 hover:bg-red-700 text-white text-center px-4 py-2 rounded-md">
+                    Hapus
+                </a>
+            @endif
         </div>
     </div>
 </div>

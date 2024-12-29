@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Order;
+use App\Models\Tim;
 use Illuminate\Support\Str;
 
 class TransactionController extends Controller
@@ -12,7 +13,6 @@ class TransactionController extends Controller
     public function index($id)
     {
         $event = Event::find($id);
-
         return view('client.auth.page.event.payment', compact('event'));
     }
 
@@ -23,6 +23,7 @@ class TransactionController extends Controller
         ]);
 
         $event = Event::find($id);
+        $tim = Tim::where('leader_id', auth()->id())->first();
 
         if (!$event) {
             return $request->wantsJson() ? response()->json(['success' => false, 'message' => 'Event tidak ditemukan.'], 404) : abort(404, 'Event tidak ditemukan.');
@@ -39,6 +40,8 @@ class TransactionController extends Controller
             'payment_status' => 'Pending',
         ]);
 
+        $tim->update(['order_id' => $order->id]);
+
         if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
@@ -48,15 +51,6 @@ class TransactionController extends Controller
             ]);
         }
 
-        return redirect()->route('homepage')->with('success', 'Order berhasil dibuat.');
-    }
-
-    public function history()
-    {
-        $orders = Order::where('user_id', auth()->id())
-            ->with('event')
-            ->get();
-
-        return view('client.auth.page.transaction.index', compact('orders'));
+        return redirect()->route('midtrans.payment')->with('success', 'Order berhasil dibuat.');
     }
 }
