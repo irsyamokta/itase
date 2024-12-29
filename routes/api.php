@@ -3,10 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ParticipantController;
 
-Route::post('dashboard/events/form', [EventController::class, 'store'])->name('event.store');
-Route::get('dashboard/events', [DashboardController::class, 'event'])->name('dashboard.event');
+Route::prefix('dashboard')->name('dashboard.')->group(function () {
 
-Route::get('dashboard/events/update/{id}', [EventController::class, 'view'])->name('event.view');
-Route::patch('dashboard/events/update/{id}', [EventController::class, 'update'])->name('event.update');
-Route::delete('dashboard/events/delete/{id}', [EventController::class, 'destroy'])->name('event.destroy');
+    Route::get('participants', [DashboardController::class, 'participant'])->name('participant');
+
+    Route::prefix('events')->name('event.')->group(function () {
+        Route::get('/', [DashboardController::class, 'event'])->name('index');
+        Route::post('form', [EventController::class, 'store'])->name('store');
+        Route::get('update/{id}', [EventController::class, 'view'])->name('view');
+        Route::patch('update/{id}', [EventController::class, 'update'])->name('update');
+        Route::delete('delete/{id}', [EventController::class, 'destroy'])->name('destroy');
+    });
+});
