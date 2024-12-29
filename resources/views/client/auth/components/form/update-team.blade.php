@@ -38,13 +38,13 @@
                 <div class="md:col-span-7 lg:col-span-9 space-y-4">
                     <input type="text" placeholder="Nama Lengkap" name="name[]"
                         value="{{ $participants[0]->name ?? '' }}" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="email" placeholder="Email" name="email[]" value="{{ $participants[0]->email ?? '' }}"
                         required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="text" placeholder="Universitas" name="university[]"
                         value="{{ $participants[0]->university ?? '' }}" reaquired
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <div class="flex flex-col items-start gap-2">
                         <label class="text-sm text-gray-600">Update KTM</label>
                         <input type="file" name="ktm[]"
@@ -67,20 +67,20 @@
                                 class="w-full h-full object-cover" id="img-preview-member1">
                         </div>
                     </label>
-                    <input type="file" id="imageUpload-member1" name="profile[]" accept="image/*" 
+                    <input type="file" id="imageUpload-member1" name="profile[]" accept="image/*"
                         class="hidden" onchange="previewImage('imageUpload-member1', 'img-preview-member1')">
                 </div>
                 <!-- Input Fields -->
                 <div class="md:col-span-7 lg:col-span-9 space-y-4">
                     <input type="text" placeholder="Nama Lengkap" name="name[]"
                         value="{{ $participants[1]->name ?? '' }}" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="email" placeholder="Email" name="email[]" value="{{ $participants[1]->email ?? '' }}"
                         required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="text" placeholder="Universitas" name="university[]"
                         value="{{ $participants[1]->university ?? '' }}" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <div class="flex flex-col items-start gap-2">
                         <label class="text-sm text-gray-600">Update KTM</label>
                         <input type="file" name="ktm[]"
@@ -103,23 +103,23 @@
                                 class="w-full h-full object-cover" id="img-preview-member2">
                         </div>
                     </label>
-                    <input type="file" id="imageUpload-member2" name="profile[]" accept="image/*" 
+                    <input type="file" id="imageUpload-member2" name="profile[]" accept="image/*"
                         class="hidden" onchange="previewImage('imageUpload-member2', 'img-preview-member2')">
-                </div>                
+                </div>
                 <!-- Input Fields -->
                 <div class="md:col-span-7 lg:col-span-9 space-y-4">
                     <input type="text" placeholder="Nama Lengkap" name="name[]"
                         value="{{ $participants[2]->name ?? '' }}" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="email" placeholder="Email" name="email[]"
                         value="{{ $participants[2]->email ?? '' }}" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="text" placeholder="Universitas" name="university[]"
                         value="{{ $participants[2]->university ?? '' }}" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <div class="flex flex-col items-start gap-2">
                         <label class="text-sm text-gray-600">Update KTM</label>
-                        <input type="file" name="ktm[]" 
+                        <input type="file" name="ktm[]"
                             class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-purple-100 file:text-purple-700 hover:file:bg-purple-200" />
                     </div>
                 </div>

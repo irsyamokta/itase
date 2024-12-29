@@ -19,11 +19,11 @@ class DashboardController extends Controller
         return view('admin.page.participant.index', compact('participants'));
     }
 
-    public function event()
+    public function event(Request $request)
     {
         $events = Event::all();
 
-        if (request()->wantsJson()) {
+        if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
                 'events' => $events,

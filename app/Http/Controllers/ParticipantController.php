@@ -44,6 +44,14 @@ class ParticipantController extends Controller
                     'role' => $request->role[$index],
                 ]);
             }
+
+            if($request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Data peserta berhasil disimpan.',
+                ]);
+            }
+            
             return redirect()->route('team')->with('success', 'Data peserta berhasil disimpan.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan. Silahkan coba lagi.');

@@ -37,11 +37,11 @@
                 <!-- Input Fields -->
                 <div class="md:col-span-7 lg:col-span-9 space-y-4">
                     <input type="text" placeholder="Nama Lengkap" name="name[]" value="{{ Auth::user()->name }}" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="email" placeholder="Email" name="email[]" value="{{ Auth::user()->email }}" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="text" placeholder="Universitas" name="university[]" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <div class="flex flex-col items-start gap-2">
                         <label class="text-sm text-gray-600">Upload KTM</label>
                         <input type="file" name="ktm[]" required
@@ -68,11 +68,11 @@
                 <!-- Input Fields -->
                 <div class="md:col-span-7 lg:col-span-9 space-y-4">
                     <input type="text" placeholder="Nama Lengkap" name="name[]" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="email" placeholder="Email" name="email[]" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="text" placeholder="Universitas" name="university[]" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <div class="flex flex-col items-start gap-2">
                         <label class="text-sm text-gray-600">Upload KTM</label>
                         <input type="file" name="ktm[]" required
@@ -99,11 +99,11 @@
                 <!-- Input Fields -->
                 <div class="md:col-span-7 lg:col-span-9 space-y-4">
                     <input type="text" placeholder="Nama Lengkap" name="name[]" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="email" placeholder="Email" name="email[]" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <input type="text" placeholder="Universitas" name="university[]" required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-primary" />
                     <div class="flex flex-col items-start gap-2">
                         <label class="text-sm text-gray-600">Upload KTM</label>
                         <input type="file" name="ktm[]" required

@@ -9,9 +9,9 @@ class Order extends Model
     protected $table = 'orders';
     protected $fillable = [
         'user_id',
+        'event_id',
         'transaction_id',
         'phone',
-        'category',
         'amount',
         'payment_status',
     ];
@@ -19,5 +19,10 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
     }
 }

@@ -10,7 +10,8 @@
                 @include('client.auth.components.partials.header')
                 <main>
                     <div class="mx-auto max-w-screen-2xl p-4 md:p-5">
-                        <x-empty :title="'Registrasi tim dulu yuuk...'" :img="'img-register.png'" :button="'Registrasi Tim'" />
+                        <div class="mb-5">
+                        <x-card-payment :title="$event->event_name" :price="$event->price" :banner="$event->banner" />
                     </div>
                 </main>
             </div>

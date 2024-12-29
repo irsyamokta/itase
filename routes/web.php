@@ -5,12 +5,16 @@ use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 
 Route::middleware(['auth', 'role:participant'])->group(function () {
     Route::get('/event', [HomepageController::class, 'event'])->name('event');
+    Route::get('/event/payment/{id}', [TransactionController::class, 'index'])->name('event.payment');
+    Route::post('/event/order/{id}', [TransactionController::class, 'order'])->name('event.order');
+
     Route::get('/team', [HomepageController::class, 'team'])->name('team');
 
     Route::get('/team/register', [HomepageController::class, 'registerTeam'])->name('team.register');

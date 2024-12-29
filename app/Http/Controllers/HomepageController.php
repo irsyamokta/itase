@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tim;
 use App\Models\Participant;
+use App\Models\Event;
 
 class HomepageController extends Controller
 {
@@ -25,21 +26,31 @@ class HomepageController extends Controller
         return view('client.index');
     }
 
-    public function event()
+    public function event(Request $request)
     {
-        return view('client.auth.page.event.index');
+        $events = Event::all();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'events' => $events,
+            ]);
+        }
+
+        return view('client.auth.page.event.index', compact('events'));
     }
+    
     public function team()
     {
         $user = auth()->user();
         $tim = Tim::where('leader_id', $user->id)->first();
-        
+
         if (!$tim) {
             return view('client.auth.page.team.not-registered');
         }
 
         $participants = Participant::where('tim_id', $tim->id)->get();
-        
+
         if ($tim->registered == 1) {
 
             return view('client.auth.page.team.index', compact('tim', 'participants'));

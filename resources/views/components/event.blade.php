@@ -15,21 +15,29 @@
                 <span class="text-lg font-bold text-gray-800 border-2 border-dark px-6 py-1 rounded-md">
                     Rp{{ number_format($price, 0, '.', '.') }}
                 </span>
-                <div class="flex gap-2 md:col-span-2 justify-end">
-                    <a href="{{ route('event.view', $id) }}">
+                @if (auth()->user()->role == 'admin')
+                    <div class="flex gap-2 md:col-span-2 justify-end">
+                        <a href="{{ route('event.view', $id) }}">
+                            <button class="bg-primary text-white font-medium rounded-lg px-15 py-2 hover:bg-secondary">
+                                Edit
+                            </button>
+                        </a>
+                        <form action="{{ route('event.destroy', $id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit"
+                                class="bg-red-800 hover:bg-red-700 text-white text-center px-4 py-2 rounded-md">
+                                Hapus
+                            </button>
+                        </form>
+                    </div>
+                @else
+                    <a href="{{ route('event.payment', $id) }}">
                         <button class="bg-primary text-white font-medium rounded-lg px-15 py-2 hover:bg-secondary">
-                            Edit
+                            Daftar
                         </button>
                     </a>
-                    <form action="{{ route('event.destroy', $id) }}" method="POST">
-                        @csrf
-                        @method('delete')
-                        <button type="submit"
-                            class="bg-red-800 hover:bg-red-700 text-white text-center px-4 py-2 rounded-md">
-                            Hapus
-                        </button>
-                    </form>
-                </div>
+                @endif
             </div>
         </div>
     </div>
