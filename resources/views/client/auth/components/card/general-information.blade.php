@@ -24,23 +24,42 @@
     <div class="lg:col-span-2 bg-white shadow-md rounded-lg p-6 border-2 border-accent">
         <h3 class="text-lg font-bold text-gray-800">Pengumuman</h3>
         <p class="text-sm text-gray-600 mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis mi tellus. Nullam finibus, erat malesuada posuere ullamcorper, nunc sapien egestas tellus, et bibendum odio odio vel est. Nunc imperdiet sem at sapien lacinia, et feugiat orci viverra. In consectetur auctor turpis, nec blandit purus consequat eu. Nulla interdum ipsum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis mi tellus. Nullam finibus, erat malesuada posuere ullamcorper, nunc sapien egestas tellus, et bibendum odio odio vel est. Nunc imperdiet sem at sapien lacinia, et feugiat orci viverra. In consectetur auctor turpis, nec blandit purus consequat eu. Nulla interdum ipsum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis mi tellus. Nullam finibus, erat malesuada posuere ullamcorper, nunc sapien egestas tellus, et bibendum odio odio vel est. Nunc imperdiet sem at sapien lacinia, et feugiat orci viverra. In consectetur auctor turpis, nec blandit purus consequat eu. Nulla interdum ipsum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis mi tellus. Nullam finibus, erat
+            malesuada posuere ullamcorper, nunc sapien egestas tellus, et bibendum odio odio vel est. Nunc imperdiet sem
+            at sapien lacinia, et feugiat orci viverra. In consectetur auctor turpis, nec blandit purus consequat eu.
+            Nulla interdum ipsum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis mi tellus. Nullam finibus, erat
+            malesuada posuere ullamcorper, nunc sapien egestas tellus, et bibendum odio odio vel est. Nunc imperdiet sem
+            at sapien lacinia, et feugiat orci viverra. In consectetur auctor turpis, nec blandit purus consequat eu.
+            Nulla interdum ipsum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis mi tellus. Nullam finibus, erat
+            malesuada posuere ullamcorper, nunc sapien egestas tellus, et bibendum odio odio vel est. Nunc imperdiet sem
+            at sapien lacinia, et feugiat orci viverra. In consectetur auctor turpis, nec blandit purus consequat eu.
+            Nulla interdum ipsum.
         </p>
     </div>
 
     <!-- Submission -->
     <div class="lg:col-span-3 bg-white shadow-md rounded-lg p-6 border-2 border-accent">
-        <h3 class="text-lg font-bold text-gray-800">Submission</h3>
-        <p class="text-sm text-gray-600 mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc imperdiet sem at sapien lacinia, et feugiat orci viverra.
-        </p>
-        <div class="mt-4 flex flex-col md:flex-row items-start gap-4">
-            <input type="file" class="text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:bg-purple-100 file:text-purple-700 hover:file:bg-purple-200 file:border-0 "/>
-            <button class="bg-primary text-white font-medium rounded-md px-32 py-2 hover:bg-secondary">
-                Submit
-            </button>
-        </div>
+        @if (isset($submission))
+            <p class="text-title-sm md:text-title-lg text-secondary text-center font-semibold">Terima kasih telah mengumpulkan karya tepat waktu</p>
+        @else
+            <h3 class="text-lg font-bold text-gray-800">Submission</h3>
+            <p class="text-sm text-gray-600 mt-2">
+                Segera submit karya Anda sebelum waktu pengumpulan karya berakhir!
+            </p>
+            <div class="mt-4 flex flex-col md:flex-row items-start gap-4">
+                <form action="{{ route('submission.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file"
+                        class="text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:bg-purple-100 file:text-purple-700 hover:file:bg-purple-200 file:border-0 "
+                        required />
+                    <button type="submit"
+                        class="bg-primary text-white font-medium rounded-md px-32 py-2 hover:bg-secondary">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        @endif
     </div>
 </div>

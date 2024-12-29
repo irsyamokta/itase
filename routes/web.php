@@ -7,6 +7,7 @@ use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\MidtransController;
+use App\Http\Controllers\SubmissionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
@@ -25,6 +26,8 @@ Route::middleware(['auth', 'role:participant'])->group(function () {
     Route::get('/team/destroy', [ParticipantController::class, 'destroy'])->name('team.destroy');
 
     Route::get('/transaction/payment', [MidtransController::class, 'index'])->name('midtrans.payment');
+
+    Route::post('/submission', [SubmissionController::class, 'store'])->name('submission.store');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

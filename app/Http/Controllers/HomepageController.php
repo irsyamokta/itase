@@ -7,6 +7,7 @@ use App\Models\Tim;
 use App\Models\Participant;
 use App\Models\Event;
 use App\Models\Order;
+use App\Models\Submission;
 
 class HomepageController extends Controller
 {
@@ -15,12 +16,13 @@ class HomepageController extends Controller
         if (auth()->check()) {
             $timId = Tim::where('leader_id', auth()->id())->value('id');
             $nameTim = Tim::where('leader_id', auth()->id())->value('tim_name');
+            $submission = Submission::where('tim_id', $timId)->first();
 
             if (!$timId) {
                 return view('client.auth.page.dashboard.index', compact('nameTim'));
             } else {
                 $participants = Participant::where('tim_id', $timId)->get();
-                return view('client.auth.page.dashboard.index', compact('nameTim', 'participants'));
+                return view('client.auth.page.dashboard.index', compact('nameTim', 'participants', 'submission'));
             }
         }
 
