@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Participant;
 use App\Models\Event;
+use App\Models\Submission;
 
 class DashboardController extends Controller
 {
@@ -35,6 +36,7 @@ class DashboardController extends Controller
 
     public function submission()
     {
-        return view('admin.page.submission.index');
+        $submissions = Submission::with(['tim.order.event'])->paginate(20);
+        return view('admin.page.submission.index', compact('submissions'));
     }
 }

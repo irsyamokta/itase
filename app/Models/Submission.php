@@ -15,6 +15,6 @@ class Submission extends Model
 
     public function tim()
     {
-        return $this->belongsTo(Tim::class, 'id');
+        return $this->belongsTo(Tim::class, 'tim_id');
     }
 }

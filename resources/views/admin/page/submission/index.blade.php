@@ -10,8 +10,7 @@
                 @include('admin.components.partials.header')
                 <main>
                     <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-5">
-                        {{-- @include('client.auth.components.card.countdown') --}}
-                        {{-- @include('client.auth.components.card.general-information') --}}
+                        @include('admin.components.table.submission')
                     </div>
                 </main>
             </div>

@@ -28,4 +28,9 @@ class Tim extends Model
     {
         return $this->hasOne(Order::class, 'id', 'order_id');
     }
+
+    public function submissions()
+    {
+        return $this->hasMany(Submission::class);
+    }
 }

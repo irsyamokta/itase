@@ -2,7 +2,7 @@
     <!-- Tim Profil -->
     <div class="bg-white shadow-md rounded-lg p-6 border-2 border-accent">
         <h3 class="text-lg font-bold text-gray-800">Tim Profil</h3>
-        <p class="text-lg mb-4">{{ $nameTim ?? '' }} ({{ $timId->order->event_name }})</p>
+        <p class="text-lg mb-4">{{ $nameTim ?? '' }}</p>
         <div class="mb-4">
             <p class="font-semibold text-gray-700">Leader</p>
             <p class="text-sm text-gray-600">Nama: {{ $participants[0]['name'] ?? '' }}</p>
