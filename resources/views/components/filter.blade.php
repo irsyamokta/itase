@@ -1,5 +1,7 @@
+@props(['title', 'route'])
+
 <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4 py-5 px-5">
-    <h1 class="text-xl font-bold text-dark">Data Pembayaran Lomba</h1>
+    <h1 class="text-xl font-bold text-dark">{{ $title }}</h1>
     <label for="table-search" class="sr-only">Search</label>
     <div class="relative">
         <form action="{{ route('participant.search') }}" method="GET">

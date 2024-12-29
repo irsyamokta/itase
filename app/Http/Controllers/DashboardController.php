@@ -5,13 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Participant;
 use App\Models\Event;
+use App\Models\Order;
+use App\Models\Tim;
 use App\Models\Submission;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.page.dashboard.index');
+        $orders = Order::with(['event', 'user'])->paginate(20);
+        $participants = Participant::all()->count();
+        $tims = Tim::all()->count();
+        $submissions = Submission::all()->count();
+        $revenue = Order::all()->sum('amount');
+
+        return view('admin.page.dashboard.index', compact('orders', 'participants', 'tims', 'submissions', 'revenue'));
     }
 
     public function participant()

@@ -25,4 +25,9 @@ class Order extends Model
     {
         return $this->belongsTo(Event::class, 'event_id');
     }
+
+    public function tim()
+    {
+        return $this->belongsTo(Tim::class, 'order_id', 'id');
+    }
 }

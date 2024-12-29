@@ -12,6 +12,7 @@
                     <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-5">
                         @include('client.auth.components.card.countdown')
                         @include('admin.components.card.dashboard')
+                        @include('admin.components.table.order')
                     </div>
                 </main>
             </div>
