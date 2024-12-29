@@ -15,6 +15,8 @@ Route::middleware(['auth', 'role:participant'])->group(function () {
     Route::get('/event/payment/{id}', [TransactionController::class, 'index'])->name('event.payment');
     Route::post('/event/order/{id}', [TransactionController::class, 'order'])->name('event.order');
 
+    Route::get('/transaction', [TransactionController::class, 'history'])->name('transaction');
+
     Route::get('/team', [HomepageController::class, 'team'])->name('team');
 
     Route::get('/team/register', [HomepageController::class, 'registerTeam'])->name('team.register');

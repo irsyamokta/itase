@@ -1,6 +1,6 @@
 @extends('client.index')
 @section('content')
-    <section x-data="{ page: 'team', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
+    <section x-data="{ page: 'transaction', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
     $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
         :class="{ 'dark text-bodydark bg-boxdark-2': darkMode === true }">
         @include('client.auth.components.partials.preloader')
@@ -11,7 +11,8 @@
                 <main>
                     <div class="mx-auto max-w-screen-2xl p-4 md:p-5">
                         <div class="mb-5">
-                        <x-card-payment :title="$event->event_name" :price="$event->price" :banner="$event->banner" />
+                        {{-- <x-card-payment :title="$event->event_name" :price="$event->price" :banner="$event->banner" /> --}}
+                        <x-history :orders="$orders"/>
                     </div>
                 </main>
             </div>

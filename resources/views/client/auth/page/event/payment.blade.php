@@ -20,7 +20,7 @@
                         </div>
                         <form action="{{ route('event.order', $event->id) }}" method="POST">
                             @csrf
-                            <x-card-payment :title="$event->event_name" :price="$event->price" :banner="$event->banner" />
+                            <x-card-payment :title="$event->event_name" :price="$event->price" :banner="$event->banner" :button="'Lanjut Pembayaran'" :readonly="false" />
                         </form>
                     </div>
                 </main>

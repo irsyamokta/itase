@@ -15,7 +15,7 @@
                         @else
                             @foreach ($events as $item)
                                 <x-event :id="$item->id" :event_name="$item->event_name" :description="$item->description" :price="$item->price"
-                                    :banner="$item->banner" />
+                                    :banner="$item->banner" :order="$order" />
                             @endforeach
                         @endif
                     </div>

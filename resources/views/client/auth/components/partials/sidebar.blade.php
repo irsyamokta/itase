@@ -124,8 +124,8 @@
                     </li>
                     <li>
                         <a class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-secondary"
-                            href="" @click="selected = (selected === 'Order' ? '':'Order')"
-                            :class="page.includes('Order') ? 'bg-secondary' : ''">
+                            href="{{ route('transaction') }}" @click="selected = (selected === 'Transaksi' ? '':'Trasaksi')"
+                            :class="page.includes('transaction') ? 'bg-secondary' : ''">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 stroke="#ffffff">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>

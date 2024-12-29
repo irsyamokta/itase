@@ -19,10 +19,7 @@ class TransactionController extends Controller
     public function order(Request $request, $id)
     {
         $validated = $request->validate([
-            'phone' => [
-                'required',
-                'regex:/^(\+62|62|0)[8][1-9][0-9]{6,}$/',
-            ],
+            'phone' => ['required', 'regex:/^(\+62|62|0)[8][1-9][0-9]{6,}$/'],
         ]);
 
         $event = Event::find($id);
@@ -54,7 +51,12 @@ class TransactionController extends Controller
         return redirect()->route('homepage')->with('success', 'Order berhasil dibuat.');
     }
 
-    public function history(){
-        
+    public function history()
+    {
+        $orders = Order::where('user_id', auth()->id())
+            ->with('event')
+            ->get();
+
+        return view('client.auth.page.transaction.index', compact('orders'));
     }
 }
