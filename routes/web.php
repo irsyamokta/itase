@@ -4,9 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParticipantController;
-use App\Models\Participant;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
-
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 
@@ -30,9 +29,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/participants', [DashboardController::class, 'participant'])->name('dashboard.participant');
-        Route::get('/participants/search', [ParticipantController::class, 'search'])->name('search.participant');
+        Route::get('/participants/search', [ParticipantController::class, 'search'])->name('participant.search');
 
         Route::get('/events', [DashboardController::class, 'event'])->name('dashboard.event');
+        Route::get('/events/form', [EventController::class, 'index'])->name('event.form');
+        Route::post('/events/form', [EventController::class, 'store'])->name('event.store');
+        Route::get('/events/update/{id}', [EventController::class, 'view'])->name('event.view');
+        Route::patch('/events/update/{id}', [EventController::class, 'update'])->name('event.update');
+        Route::delete('/events/delete/{id}', [EventController::class, 'destroy'])->name('event.destroy');
+
         Route::get('/submissions', [DashboardController::class, 'submission'])->name('dashboard.submission');
     });
 });

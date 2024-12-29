@@ -10,10 +10,7 @@
                 @include('admin.components.partials.header')
                 <main>
                     <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-5">
-                        @foreach ($events as $item)
-                            <x-event :id="$item->id" :event_name="$item->event_name" :description="$item->description" :price="$item->price" :banner="$item->banner" />
-                        @endforeach
-                        @include('admin.components.partials.button')
+                        @include('admin.components.form.add-event')
                     </div>
                 </main>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Participant;
+use App\Models\Event;
 
 class DashboardController extends Controller
 {
@@ -20,7 +21,16 @@ class DashboardController extends Controller
 
     public function event()
     {
-        return view('admin.page.event.index');
+        $events = Event::all();
+
+        if (request()->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'events' => $events,
+            ]);
+        }
+
+        return view('admin.page.event.index', compact('events'));
     }
 
     public function submission()

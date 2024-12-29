@@ -11,5 +11,6 @@ class Event extends Model
         'event_name',
         'description',
         'price',
+        'banner'
     ];
 }
