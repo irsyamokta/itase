@@ -1,4 +1,4 @@
-@props(['id', 'event_name', 'description', 'price', 'banner', 'order'])
+@props(['id', 'event_name', 'description', 'price', 'banner', 'order', 'timId'])
 
 <div class="grid grid-cols-1 gap-6 mt-5">
     <div
@@ -33,7 +33,7 @@
                     </div>
                 @else
                     <a href="{{ route('event.payment', $id) }}">
-                        @if ($order?->payment_status == 'Pending' || $order?->payment_status == 'Success')
+                        @if ($order?->payment_status == 'Pending' || $order?->payment_status == 'Success' || !$timId)
                             <button class="bg-slate-400 text-white font-medium rounded-lg px-15 py-2" disabled>
                                 Daftar
                             </button>

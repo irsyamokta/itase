@@ -2,7 +2,7 @@
     <!-- Tim Profil -->
     <div class="bg-white shadow-md rounded-lg p-6 border-2 border-accent">
         <h3 class="text-lg font-bold text-gray-800">Tim Profil</h3>
-        <p class="text-lg mb-4">{{ $nameTim ?? '' }}</p>
+        <p class="text-lg mb-4">{{ $nameTim ?? '' }} ({{ $eventName ?? 'Belum mendaftar event' }})</p>
         <div class="mb-4">
             <p class="font-semibold text-gray-700">Leader</p>
             <p class="text-sm text-gray-600">Nama: {{ $participants[0]['name'] ?? '' }}</p>
@@ -43,6 +43,8 @@
     <div class="lg:col-span-3 bg-white shadow-md rounded-lg p-6 border-2 border-accent">
         @if (isset($submission))
             <p class="text-title-sm md:text-title-lg text-secondary text-center font-semibold">Terima kasih telah mengumpulkan karya tepat waktu</p>
+        @elseif(!$timId || !$order)
+            <p class="text-title-sm md:text-title-lg text-secondary text-center font-semibold">Tim Anda belum terdaftar atau belum mendaftar event</p>
         @else
             <h3 class="text-lg font-bold text-gray-800">Submission</h3>
             <p class="text-sm text-gray-600 mt-2">

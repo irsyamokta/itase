@@ -16,13 +16,17 @@ class HomepageController extends Controller
         if (auth()->check()) {
             $timId = Tim::where('leader_id', auth()->id())->value('id');
             $nameTim = Tim::where('leader_id', auth()->id())->value('tim_name');
+
             $submission = Submission::where('tim_id', $timId)->first();
 
+            $order = Order::where('user_id', auth()->id())->first();
+            $eventName = $order ? $order->event->event_name : null;
+
             if (!$timId) {
-                return view('client.auth.page.dashboard.index', compact('nameTim'));
+                return view('client.auth.page.dashboard.index', compact('nameTim', 'eventName', 'timId', 'order'));
             } else {
                 $participants = Participant::where('tim_id', $timId)->get();
-                return view('client.auth.page.dashboard.index', compact('nameTim', 'participants', 'submission'));
+                return view('client.auth.page.dashboard.index', compact('nameTim', 'participants', 'submission', 'eventName', 'timId', 'order'));
             }
         }
 
@@ -33,6 +37,7 @@ class HomepageController extends Controller
     {
         $events = Event::all();
         $order = Order::where('user_id', auth()->id())->first();
+        $timId = Tim::where('leader_id', auth()->id())->value('id');
 
         if ($request->wantsJson()) {
             return response()->json([
@@ -41,13 +46,15 @@ class HomepageController extends Controller
             ]);
         }
 
-        return view('client.auth.page.event.index', compact('events', 'order'));
+        return view('client.auth.page.event.index', compact('events', 'order', 'timId'));
     }
 
     public function team()
     {
         $user = auth()->user();
-        $tim = Tim::where('leader_id', $user->id)->with('order')->first();
+        $tim = Tim::where('leader_id', $user->id)
+            ->with('order')
+            ->first();
 
         if (!$tim) {
             return view('client.auth.page.team.not-registered');
@@ -56,7 +63,6 @@ class HomepageController extends Controller
         $participants = Participant::where('tim_id', $tim->id)->get();
 
         if ($tim->registered == 1) {
-
             return view('client.auth.page.team.index', compact('tim', 'participants'));
         }
     }
