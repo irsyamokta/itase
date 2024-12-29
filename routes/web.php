@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ParticipantController;
+use App\Models\Participant;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,7 +28,10 @@ Route::middleware(['auth', 'role:participant'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
         Route::get('/participants', [DashboardController::class, 'participant'])->name('dashboard.participant');
+        Route::get('/participants/search', [ParticipantController::class, 'search'])->name('search.participant');
+
         Route::get('/events', [DashboardController::class, 'event'])->name('dashboard.event');
         Route::get('/submissions', [DashboardController::class, 'submission'])->name('dashboard.submission');
     });

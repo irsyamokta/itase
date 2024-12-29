@@ -86,7 +86,6 @@ class ParticipantController extends Controller
                 'ktm' => 'nullable|array',
                 'ktm.*' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
             ]);
-            
 
             $tim = Tim::where('id', $id)->where('leader_id', auth()->id())->firstOrFail();
 
@@ -143,5 +142,19 @@ class ParticipantController extends Controller
                 ->back()
                 ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        $participants = Participant::where('name', 'like', '%' . $search . '%')
+            ->orWhere('university', 'like', '%' . $search . '%')
+            ->orWhereHas('tim', function ($query) use ($search) {
+                $query->where('tim_name', 'like', '%' . $search . '%');
+            })
+            ->paginate(20);
+
+        return view('admin.page.participant.index', compact('participants'));
     }
 }

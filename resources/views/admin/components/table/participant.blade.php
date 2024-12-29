@@ -12,7 +12,7 @@
                 <th scope="col" class="px-5 py-3 whitespace-nowrap">
                     Nama Peserta
                 </th>
-                <th scope="col" class="px-5 py-3 whitespace-nowrap">
+                <th scope="col" class="px-3 py-3">
                     Email
                 </th>
                 <th scope="col" class="px-5 py-3 whitespace-nowrap">
@@ -29,7 +29,7 @@
         <tbody>
             @if (count($participants) <= 0)
                 <tr>
-                    <td colspan="2" class="text-start py-8">Tidak ada data</td>
+                    <td colspan="8" class="text-center py-8">Tidak ada data</td>
                 </tr>
             @else
                 @foreach ($participants as $row)
@@ -43,7 +43,7 @@
                         <th scope="row" class="px-3 py-4 font-medium whitespace-nowrap text-start">
                             {{ $row->name }}
                         </th>
-                        <th scope="row" class="px-3 py-4 font-medium text-start">
+                        <th scope="row" class="py-4 font-medium text-start">
                             {{ $row->email }}
                         </th>
                         <th scope="row"
