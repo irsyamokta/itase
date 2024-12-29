@@ -1,5 +1,5 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5 border-2 border-accent">
-    <x-filter :title="'Data Pembayaran Lomba'" :route="'dashboard'"/>
+    <x-searching :title="'Data Pembayaran Lomba'" :route="'dashboard'"/>
     <div class="px-5">
         <table class="w-full text-sm text-center rtl:text-right text-gray-500">
             <thead class="text-xs text-white uppercase bg-primary">

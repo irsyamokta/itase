@@ -54,21 +54,30 @@ class DashboardController extends Controller
     public function submission(Request $request)
     {
         $search = $request->input('search');
+        $event = $request->input('event');
+
+        $submissions = Submission::with(['tim.order.event']);
+
         if ($search) {
-            $submissions = Submission::with(['tim.order.event'])
+            $submissions
                 ->whereHas('tim', function ($query) use ($search) {
-                    // Mencari nama tim
                     $query->where('tim_name', 'like', '%' . $search . '%');
                 })
                 ->orWhereHas('tim.order.event', function ($query) use ($search) {
-                    // Mencari nama event
                     $query->where('event_name', 'like', '%' . $search . '%');
-                })
-                ->paginate(20);
-        } else {
-            $submissions = Submission::with(['tim.order.event'])->paginate(20);
+                });
         }
-        
-        return view('admin.page.submission.index', compact('submissions'));
+
+        if ($event) {
+            $submissions->whereHas('tim.order.event', function ($query) use ($event) {
+                $query->where('event_name', $event);
+            });
+        }
+
+        $submissions = $submissions->paginate(20);
+
+        $events = Event::all();
+
+        return view('admin.page.submission.index', compact('submissions', 'events'));
     }
 }
