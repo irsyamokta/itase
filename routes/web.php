@@ -9,6 +9,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\SubmissionController;
 use Illuminate\Support\Facades\Route;
+use Midtrans\Transaction;
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 
