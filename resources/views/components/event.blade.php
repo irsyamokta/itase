@@ -2,7 +2,7 @@
 
 <div class="grid grid-cols-1 gap-6 mt-5">
     <div
-        class="flex flex-col md:flex-row bg-white shadow-md rounded-lg border-2 border-secondary p-6 items-center gap-6">
+        class="flex flex-col md:flex-row bg-white shadow-md rounded-lg border-2 border-accent p-6 items-center gap-6">
         <div class="flex-shrink-0">
             <img src="{{ asset('storage/' . $banner) }}" alt="UI/UX Design" class="w-32 h-32 rounded-lg">
         </div>
