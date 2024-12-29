@@ -65,7 +65,7 @@
             @endif
         </tbody>
     </table>
-    {{-- <div class="mt-5 mb-5">
-        {{ $products->links('vendor.pagination.tailwind') }}
-    </div> --}}
+    <div class="mt-5 mb-5 px-5">
+        {{ $participants->links('vendor.pagination.tailwind') }}
+    </div>
 </div>

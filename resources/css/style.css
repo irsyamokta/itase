@@ -6,7 +6,7 @@
 
 @layer base {
     body {
-        @apply relative z-1 bg-whiten font-satoshi text-base font-normal text-body;
+        @apply relative z-1 bg-white font-satoshi text-base font-normal text-body;
     }
 
     body {
@@ -14,7 +14,7 @@
         --sb-thumb-color: #c8acd6;
         --sb-size: 6px;
     }
-        
+
     body::-webkit-scrollbar {
         width: var(--sb-size);
     }
