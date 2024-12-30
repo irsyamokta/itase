@@ -26,7 +26,7 @@
                 <div class="items-center gap-2">
                     <label for="imageUpload" class="cursor-pointer">
                         <div id="banner-preview"
-                            class="w-24 h-32 bg-gray-200 rounded-md flex items-center justify-center overflow-hidden border-2 border-dashed border-gray-400 hover:border-purple-500">
+                            class="bg-gray-200 rounded-md flex items-center justify-center overflow-hidden border-2 border-dashed border-gray-400 hover:border-purple-500">
                             <span class="text-sm text-gray-400 text-center">Klik untuk Unggah Banner</span>
                         </div>
                     </label>
@@ -36,7 +36,7 @@
                 <div class="md:col-span-7 lg:col-span-9 space-y-4">
                     <input type="number" min="0" placeholder="Harga event" name="price" required
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
-                    <textarea name="description" cols="5" rows="2"
+                    <textarea name="description" cols="5" rows="5"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                         placeholder="Deskripsi event..." required></textarea>
                 </div>
@@ -73,7 +73,7 @@
                         return;
                     }
 
-                    const maxSizeInBytes = 2 * 1024 * 1024; // 2MB
+                    const maxSizeInBytes = 2 * 1024 * 1024;
                     if (file.size > maxSizeInBytes) {
                         alert("Ukuran file maksimum adalah 2MB.");
                         fileInput.value = "";
@@ -94,3 +94,30 @@
         });
     });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const priceInput = document.querySelector('input[name="price"]');
+
+        if (priceInput) {
+            priceInput.addEventListener("input", (event) => {
+                
+                const value = event.target.value.replace(/\./g, "");
+
+                if (!isNaN(value) && value !== "") {
+                    const formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                    event.target.value = formattedValue;
+                } else {
+                    event.target.value = "";
+                }
+            });
+
+            priceInput.addEventListener("blur", (event) => {
+                if (!event.target.value) {
+                    event.target.value = "0";
+                }
+            });
+        }
+    });
+</script>
+
+
