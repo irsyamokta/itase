@@ -24,6 +24,7 @@
                                         </label>
                                         <input name="profile" type="file" id="profilePicture" class="hidden"
                                             accept="image/*" onchange="previewProfile(event)" />
+                                            <x-input-error class="mt-2" :messages="$errors->get('profile')" />
                                     </div>
                                 </div>
 
@@ -49,6 +50,7 @@
                                                 class="w-full rounded border border-gray-300 bg-white py-3 pl-11.5 pr-4.5 font-medium text-black focus:outline-none focus:ring-2 focus:ring-purple-500"
                                                 type="text" name="name" id="name" placeholder="Nama Lengkap"
                                                 value="{{ auth()->user()->name }}" />
+                                                <x-input-error class="mt-2" :messages="$errors->get('name')" />
                                         </div>
 
                                         <!-- Email -->
@@ -74,6 +76,7 @@
                                                     class="w-full rounded border border-gray-300 bg-white py-3 pl-11.5 pr-4.5 font-medium text-black focus:outline-none focus:ring-2 focus:ring-purple-500"
                                                     type="email" name="email" id="email" placeholder="Email"
                                                     value="{{ auth()->user()->email }}" />
+                                                    <x-input-error class="mt-2" :messages="$errors->get('email')" />
                                             </div>
                                         </div>
                                     </div>
@@ -155,8 +158,8 @@
                                                     type="password" name="current_password"
                                                     id="update_password_current_password"
                                                     placeholder="Password Saat Ini" />
+                                                    <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
                                             </div>
-                                            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
                                         </div>
 
                                         <!-- New Password -->
@@ -202,8 +205,8 @@
                                                     class="w-full rounded border border-gray-300 bg-white py-3 pl-11.5 pr-4.5 font-medium text-black focus:outline-none focus:ring-2 focus:ring-purple-500"
                                                     type="password" name="password" id="update_password_password"
                                                     placeholder="Password Baru" />
+                                                    <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
                                             </div>
-                                            <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
                                         </div>
 
                                         <!-- Password Confirmation -->
@@ -250,8 +253,8 @@
                                                     type="password" name="password_confirmation"
                                                     id="update_password_password_confirmation"
                                                     placeholder="Konfirmasi Password" />
+                                                    <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
                                             </div>
-                                            <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
                                         </div>
                                     </div>
                                 </div>
