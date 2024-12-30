@@ -23,7 +23,7 @@ class SubmissionController extends Controller
 
             $submission = Submission::create([
                 'tim_id' => $tim->id,
-                'file' => $validated['file'],
+                'file' => $path,
             ]);
 
             if ($request->wantsJson()) {
