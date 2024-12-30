@@ -16,7 +16,7 @@ class VerifyTeamLeader
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $tim = Tim::find($request->route('id'));
+        $tim = Tim::where('leader_id', auth()->id())->first();
 
         if ($tim && $tim->leader_id !== auth()->id()) {
             return redirect()->back()->with('error', 'Anda tidak memiliki akses ke tim ini.');
