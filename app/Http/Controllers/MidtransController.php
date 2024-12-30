@@ -24,7 +24,8 @@ class MidtransController extends Controller
             ->latest()
             ->first();
 
-        $orders = Order::where('user_id', auth()->id())->with('event')->get();
+        $orders = Order::where('user_id', auth()->id())->with('event')->orderBy('created_at', 'desc')->get();
+
 
         if ($order) {
             $order->load('event');
@@ -34,7 +35,7 @@ class MidtransController extends Controller
             return view('client.auth.page.transaction.index', compact('orders', 'order', 'snapToken'));
         }
 
-        if ($order && $order->payment_status == 'Success' || $order->payment_status == 'Canceled') {
+        if (($order && $order->payment_status == 'Success') || $order->payment_status == 'Canceled') {
             return view('client.auth.page.transaction.index', compact('orders', 'order', 'snapToken'));
         }
 

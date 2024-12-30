@@ -36,7 +36,11 @@ class HomepageController extends Controller
     public function event(Request $request)
     {
         $events = Event::all();
-        $order = Order::where('user_id', auth()->id())->first();
+        
+        $order = Order::where('user_id', auth()->id())
+        ->latest('created_at')
+        ->first();
+
         $timId = Tim::where('leader_id', auth()->id())->value('id');
 
         if ($request->wantsJson()) {

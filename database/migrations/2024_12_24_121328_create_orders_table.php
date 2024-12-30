@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('event_id')->constrained()->cascadeOnDelete();
             $table->string('transaction_id');
-            $table->string('phone')->unique();
+            $table->string('phone');
             $table->integer('amount');
             $table->string('payment_status')->default('Pending');
             $table->timestamps();
