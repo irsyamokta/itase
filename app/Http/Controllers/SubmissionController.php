@@ -11,7 +11,7 @@ class SubmissionController extends Controller
     public function store(Request $request)
     {
         try {
-            $validated = $request->validate([
+            $request->validate([
                 'file' => 'required|file|mimes:zip,rar|max:30720',
             ]);
 
