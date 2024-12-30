@@ -72,7 +72,7 @@
     <div class="lg:col-span-3 bg-white shadow-md rounded-lg p-6 border-2 border-accent">
         @if (isset($submission))
             <p class="text-title-sm md:text-title-lg text-secondary text-center font-semibold">Terima kasih telah mengumpulkan karya tepat waktu</p>
-        @elseif(!$timId || !$order)
+        @elseif(!$timId || !$order || $order->payment_status != 'Success')
             <p class="text-title-sm md:text-title-lg text-secondary text-center font-semibold">Tim Anda belum terdaftar atau belum mendaftar event</p>
         @else
             <h3 class="text-lg font-bold text-gray-800">Submission</h3>

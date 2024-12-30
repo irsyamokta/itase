@@ -19,7 +19,10 @@ class HomepageController extends Controller
 
             $submission = Submission::where('tim_id', $timId)->first();
 
-            $order = Order::where('user_id', auth()->id())->first();
+            $order = Order::where('user_id', auth()->id())
+            ->latest()
+            ->first();
+
             $eventName = $order ? $order->event->event_name : null;
 
             if (!$timId) {
@@ -36,7 +39,7 @@ class HomepageController extends Controller
     public function event(Request $request)
     {
         $events = Event::all();
-        
+
         $order = Order::where('user_id', auth()->id())
         ->latest('created_at')
         ->first();
