@@ -34,11 +34,11 @@
                 <a class="flex items-center gap-4" href="#" @click.prevent="dropdownOpen = ! dropdownOpen">
                     <span class="hidden text-right lg:block">
                         <span class="block text-sm font-medium text-black">{{ Auth::user()->name }}</span>
-                        <span class="block text-xs font-medium">Admin</span>
+                        <span class="block text-xs font-medium capitalize">{{ Auth::user()->role }}</span>
                     </span>
 
                     <span class="h-12 w-12 rounded-full">
-                        <img class="rounded-full" src="{{ asset('assets/img/img-profile.jpg') }}" alt="User" />
+                        <img class="rounded-full" src="{{ asset('storage/' . Auth::user()->profile) ?? asset('assets/img/user-profile.svg') }}" alt="User" />
                     </span>
 
                     <svg :class="dropdownOpen && 'rotate-180'" class="hidden fill-current sm:block" width="12"
@@ -54,7 +54,7 @@
                     class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default">
                     <ul class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5">
                         <li>
-                            <a href="settings.html"
+                            <a href="{{ route('dashboard.setting') }}"
                                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
                                 <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">

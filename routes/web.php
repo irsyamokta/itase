@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use Midtrans\Transaction;
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 Route::middleware(['auth', 'role:participant'])->group(function () {
     Route::get('/event', [HomepageController::class, 'event'])->name('event');
@@ -29,10 +30,6 @@ Route::middleware(['auth', 'role:participant'])->group(function () {
     Route::get('/transaction/payment', [MidtransController::class, 'index'])->name('midtrans.payment');
 
     Route::post('/submission', [SubmissionController::class, 'store'])->name('submission.store');
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -50,6 +47,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::delete('/events/delete/{id}', [EventController::class, 'destroy'])->name('event.destroy');
 
         Route::get('/submissions', [DashboardController::class, 'submission'])->name('dashboard.submission');
+
+        Route::get('/settings', [DashboardController::class, 'setting'])->name('dashboard.setting');
+
+
     });
 });
 

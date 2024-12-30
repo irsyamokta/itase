@@ -80,4 +80,8 @@ class DashboardController extends Controller
 
         return view('admin.page.submission.index', compact('submissions', 'events'));
     }
+
+    public function setting(){
+        return view('admin.page.setting.index');
+    }
 }
