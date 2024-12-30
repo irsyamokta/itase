@@ -11,7 +11,7 @@
                 <main>
                     <div class="mx-auto max-w-screen-2xl p-4 md:p-5">
                         @if ($events->isEmpty())
-                            <x-empty :title="'Yaaah sayangnya belum ada event...'" :img="'img-no-event.png'" :button="'Kembali ke Dashboard'" :route="'homepage'" />
+                            <x-empty :title="'Yaaah sayangnya belum ada event...'" :img="'img-no-event.png'" :button="'Kembali ke Dashboard'" :route="'homepage'" :hidden="false" />
                         @else
                             @foreach ($events as $item)
                                 <x-event :id="$item->id" :event_name="$item->event_name" :description="$item->description" :price="$item->price"
