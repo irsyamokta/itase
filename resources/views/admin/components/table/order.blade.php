@@ -35,7 +35,7 @@
                 @else
                     @foreach ($orders as $row)
                         <tr class="bg-white border-b">
-                            <th scope="row" class="flex justify-center px-3 py-4 font-medium">
+                            <th scope="row" class="flex justify-center px-3 py-4 font-medium whitespace-nowrap">
                                 {{ $row->transaction_id }}
                             </th>
                             <th scope="row" class="px-3 py-4 font-medium whitespace-nowrap">
