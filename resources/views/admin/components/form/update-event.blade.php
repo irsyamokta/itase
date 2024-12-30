@@ -37,7 +37,7 @@
                 </div>
                 <!-- Input Fields -->
                 <div class="md:col-span-7 lg:col-span-9 space-y-4">
-                    <input type="number" min="0" placeholder="Harga event" name="price" value="{{ number_format($event->price, '0', ',', '.') }}" required
+                    <input type="number" min="0" placeholder="Harga event" name="price" value="{{ $event->price }}" required
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
                     <textarea name="description" cols="5" rows="5"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -92,30 +92,5 @@
                 }
             });
         });
-    });
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const priceInput = document.querySelector('input[name="price"]');
-
-        if (priceInput) {
-            priceInput.addEventListener("input", (event) => {
-
-                const value = event.target.value.replace(/\./g, "");
-
-                if (!isNaN(value) && value !== "") {
-                    const formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-                    event.target.value = formattedValue;
-                } else {
-                    event.target.value = "";
-                }
-            });
-
-            priceInput.addEventListener("blur", (event) => {
-                if (!event.target.value) {
-                    event.target.value = "0";
-                }
-            });
-        }
     });
 </script>

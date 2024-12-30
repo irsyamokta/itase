@@ -94,30 +94,5 @@
         });
     });
 </script>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const priceInput = document.querySelector('input[name="price"]');
-
-        if (priceInput) {
-            priceInput.addEventListener("input", (event) => {
-                
-                const value = event.target.value.replace(/\./g, "");
-
-                if (!isNaN(value) && value !== "") {
-                    const formattedValue = value.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-                    event.target.value = formattedValue;
-                } else {
-                    event.target.value = "";
-                }
-            });
-
-            priceInput.addEventListener("blur", (event) => {
-                if (!event.target.value) {
-                    event.target.value = "0";
-                }
-            });
-        }
-    });
-</script>
 
 
