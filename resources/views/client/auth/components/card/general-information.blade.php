@@ -24,18 +24,47 @@
     <div class="lg:col-span-2 bg-white shadow-md rounded-lg p-6 border-2 border-accent">
         <h3 class="text-lg font-bold text-gray-800">Pengumuman</h3>
         <p class="text-sm text-gray-600 mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis mi tellus. Nullam finibus, erat
-            malesuada posuere ullamcorper, nunc sapien egestas tellus, et bibendum odio odio vel est. Nunc imperdiet sem
-            at sapien lacinia, et feugiat orci viverra. In consectetur auctor turpis, nec blandit purus consequat eu.
-            Nulla interdum ipsum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis mi tellus. Nullam finibus, erat
-            malesuada posuere ullamcorper, nunc sapien egestas tellus, et bibendum odio odio vel est. Nunc imperdiet sem
-            at sapien lacinia, et feugiat orci viverra. In consectetur auctor turpis, nec blandit purus consequat eu.
-            Nulla interdum ipsum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis mi tellus. Nullam finibus, erat
-            malesuada posuere ullamcorper, nunc sapien egestas tellus, et bibendum odio odio vel est. Nunc imperdiet sem
-            at sapien lacinia, et feugiat orci viverra. In consectetur auctor turpis, nec blandit purus consequat eu.
-            Nulla interdum ipsum.
+            <p class="text-sm text-gray-600 mt-2">
+                Halo, Peserta Lomba ITASE! 👋
+            </p>
+
+            <p class="text-sm text-gray-600 mt-2">
+                Kami ingin mengingatkan kembali bahwa tenggat waktu pengumpulan karya untuk semua kategori lomba, yaitu
+                <strong>UI/UX Design</strong>, <strong>Web Development</strong>, dan <strong>Design Poster</strong>,
+                akan berakhir pada <strong>6 Maret 2025 pukul 23:59 WIB</strong>. Pastikan karya Anda sudah sesuai dengan panduan teknis yang telah diberikan.
+            </p>
+
+            <p class="text-sm text-gray-600 mt-2">
+                Berikut beberapa poin penting yang perlu diperhatikan:
+            </p>
+
+            <ul class="list-disc list-inside text-sm text-gray-600">
+                <li>
+                    <strong>Format Pengumpulan:</strong>
+                    <ul class="list-disc list-inside ml-5">
+                        <li>Lomba UI/UX: Kirimkan file prototype dalam format PDF/link ke platform desain Anda (contoh: Figma).</li>
+                        <li>Lomba Web Development: Sertakan link repository (GitHub/Bitbucket) dan demo live jika tersedia.</li>
+                        <li>Lomba Design Poster: File harus dalam format PNG/JPEG dengan resolusi minimal 300 dpi.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Pengumpulan Karya:</strong>
+                    Semua karya harus dikirim melalui form yang telah disediakan di website resmi ITASE.
+                </li>
+                <li>
+                    <strong>Batas Waktu:</strong>
+                    Keterlambatan dalam pengumpulan akan mengurangi poin penilaian atau berpotensi didiskualifikasi.
+                </li>
+            </ul>
+
+            <p class="text-sm text-gray-600 mt-2">
+                Jika ada pertanyaan, jangan ragu untuk menghubungi kami melalui email atau WhatsApp yang tertera di buku panduan lomba.
+                Pastikan juga untuk mengikuti update di media sosial kami untuk informasi terbaru.
+            </p>
+
+            <p class="text-sm text-gray-600 mt-2">
+                Semangat dan tetap berkreasi! Kami tidak sabar untuk melihat ide-ide luar biasa dari kalian semua. ✨
+            </p>
         </p>
     </div>
 
