@@ -48,7 +48,7 @@
                                 {{ $row->email }}
                             </th>
                             <th scope="row"
-                                class="px-3 py-4 font-medium whitespace-nowrap overflow-y-auto max-w-[150px] no-scroll">
+                                class="px-3 py-4 font-medium overflow-y-auto max-w-[150px] no-scroll">
                                 {{ $row->university }}
                             </th>
                             <th scope="row"

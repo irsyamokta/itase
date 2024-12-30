@@ -26,7 +26,7 @@ class DashboardController extends Controller
         $participants = Participant::all()->count();
         $tims = Tim::all()->count();
         $submissions = Submission::all()->count();
-        $revenue = Order::all()->sum('amount');
+        $revenue = Order::where('payment_status', 'Success')->sum('amount');
 
         return view('admin.page.dashboard.index', compact('orders', 'participants', 'tims', 'submissions', 'revenue'));
     }
