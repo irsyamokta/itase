@@ -34,11 +34,12 @@
                 <a class="flex items-center gap-4" href="#" @click.prevent="dropdownOpen = ! dropdownOpen">
                     <span class="hidden text-right lg:block">
                         <span class="block text-sm font-medium text-black">{{ Auth::user()->name }}</span>
-                        <span class="block text-xs font-medium">Leader Tim</span>
+                        <span class="block text-xs font-medium capitalize">{{ Auth::user()->role }}</span>
                     </span>
 
                     <span class="h-12 w-12 rounded-full">
-                        <img class="rounded-full" src="{{ asset('assets/img/img-profile.jpg') }}" alt="User" />
+                        <img class="rounded-full" src="{{ Auth::user()->profile ? asset('storage/' . Auth::user()->profile) : asset('assets/img/profile-user.svg') }}"
+                        alt="User" />
                     </span>
 
                     <svg :class="dropdownOpen && 'rotate-180'" class="hidden fill-current sm:block" width="12"
@@ -54,7 +55,7 @@
                     class="absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default">
                     <ul class="flex flex-col gap-5 border-b border-stroke px-6 py-7.5">
                         <li>
-                            <a href="settings.html"
+                            <a href="{{ route('homepage.setting') }}"
                                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
                                 <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22"
                                     fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +66,7 @@
                                         d="M11 6.32498C8.42189 6.32498 6.32501 8.42186 6.32501 11C6.32501 13.5781 8.42189 15.675 11 15.675C13.5781 15.675 15.675 13.5781 15.675 11C15.675 8.42186 13.5781 6.32498 11 6.32498ZM11 14.1281C9.28126 14.1281 7.87189 12.7187 7.87189 11C7.87189 9.28123 9.28126 7.87186 11 7.87186C12.7188 7.87186 14.1281 9.28123 14.1281 11C14.1281 12.7187 12.7188 14.1281 11 14.1281Z"
                                         fill="" />
                                 </svg>
-                                Account Settings
+                                Profil Pengguna
                             </a>
                         </li>
                     </ul>

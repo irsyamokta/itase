@@ -44,7 +44,11 @@ class ProfileController extends Controller
         $user->fill($validatedData);
         $user->save();
 
-        return Redirect::route('dashboard.setting')->with('status', 'Profil berhasil diperbarui.');
+        if($user->role == 'admin') {
+            return Redirect::route('dashboard.setting')->with('status', 'Profil berhasil diperbarui.');
+        }
+
+        return Redirect::route('homepage.setting')->with('status', 'Profil berhasil diperbarui.');
     }
 
     /**

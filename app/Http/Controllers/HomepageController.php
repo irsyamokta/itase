@@ -71,4 +71,8 @@ class HomepageController extends Controller
     {
         return view('client.auth.page.team.register');
     }
+
+    public function setting(){
+        return view('client.auth.page.setting.index');
+    }
 }

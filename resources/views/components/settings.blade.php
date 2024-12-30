@@ -17,12 +17,13 @@
                                 <div class="mb-5.5 flex flex-col items-center gap-5.5">
                                     <div class="relative">
                                         <label for="profilePicture" class="cursor-pointer">
-                                            <img id="profilePreview" src="{{ asset('storage/' . auth()->user()->profile) }}"
-                                                alt="Profile"
+                                            <img id="profilePreview"
+                                                src="{{ Auth::user()->profile ? asset('storage/' . Auth::user()->profile) : asset('assets/img/profile-user.svg') }}"
+                                                alt="User" alt="Profile"
                                                 class="w-40 h-40 rounded-full object-cover border border-stroke" />
                                         </label>
-                                        <input name="profile" type="file" id="profilePicture" class="hidden" accept="image/*"
-                                            onchange="previewProfile(event)" />
+                                        <input name="profile" type="file" id="profilePicture" class="hidden"
+                                            accept="image/*" onchange="previewProfile(event)" />
                                     </div>
                                 </div>
 
@@ -71,8 +72,8 @@
                                                 </span>
                                                 <input
                                                     class="w-full rounded border border-gray-300 bg-white py-3 pl-11.5 pr-4.5 font-medium text-black focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                                    type="email" name="email" id="email"
-                                                    placeholder="Email" value="{{ auth()->user()->email }}" />
+                                                    type="email" name="email" id="email" placeholder="Email"
+                                                    value="{{ auth()->user()->email }}" />
                                             </div>
                                         </div>
                                     </div>
@@ -116,8 +117,8 @@
                                                 for="update_password_current_password">Password Saat Ini</label>
                                             <div class="relative mb-5.5">
                                                 <span class="absolute left-4.5 top-4">
-                                                    <svg viewBox="0 0 24 24" fill="none" width="24" height="24"
-                                                        xmlns="http://www.w3.org/2000/svg">
+                                                    <svg viewBox="0 0 24 24" fill="none" width="24"
+                                                        height="24" xmlns="http://www.w3.org/2000/svg">
                                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
                                                             stroke-linejoin="round"></g>
@@ -164,8 +165,8 @@
                                                 for="update_password_password">Password Baru</label>
                                             <div class="relative mb-5.5">
                                                 <span class="absolute left-4.5 top-4">
-                                                    <svg viewBox="0 0 24 24" fill="none" width="24" height="24"
-                                                        xmlns="http://www.w3.org/2000/svg">
+                                                    <svg viewBox="0 0 24 24" fill="none" width="24"
+                                                        height="24" xmlns="http://www.w3.org/2000/svg">
                                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
                                                             stroke-linejoin="round"></g>
@@ -211,8 +212,8 @@
                                                 for="update_password_password_confirmation">Konfirmasi Password</label>
                                             <div class="relative">
                                                 <span class="absolute left-4.5 top-4">
-                                                    <svg viewBox="0 0 24 24" fill="none" width="24" height="24"
-                                                        xmlns="http://www.w3.org/2000/svg">
+                                                    <svg viewBox="0 0 24 24" fill="none" width="24"
+                                                        height="24" xmlns="http://www.w3.org/2000/svg">
                                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
                                                             stroke-linejoin="round"></g>

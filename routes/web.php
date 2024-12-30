@@ -30,6 +30,8 @@ Route::middleware(['auth', 'role:participant'])->group(function () {
     Route::get('/transaction/payment', [MidtransController::class, 'index'])->name('midtrans.payment');
 
     Route::post('/submission', [SubmissionController::class, 'store'])->name('submission.store');
+
+    Route::get('/settings', [HomepageController::class, 'setting'])->name('homepage.setting');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -49,8 +51,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/submissions', [DashboardController::class, 'submission'])->name('dashboard.submission');
 
         Route::get('/settings', [DashboardController::class, 'setting'])->name('dashboard.setting');
-
-
     });
 });
 
