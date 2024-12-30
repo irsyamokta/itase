@@ -35,13 +35,13 @@
                 @else
                     @foreach ($orders as $row)
                         <tr class="bg-white border-b">
-                            <th scope="row" class="flex justify-center px-3 py-4 font-medium whitespace-nowrap">
+                            <th scope="row" class="px-3 py-4 font-medium whitespace-nowrap">
                                 {{ $row->transaction_id }}
                             </th>
                             <th scope="row" class="px-3 py-4 font-medium whitespace-nowrap">
                                 {{ $row->user->name }}
                             </th>
-                            <th scope="row" class="py-4 font-medium text-start">
+                            <th scope="row" class="py-4 font-medium text-start whitespace-nowrap">
                                 {{ $row->user->email }}
                             </th>
                             <th scope="row"
@@ -49,7 +49,7 @@
                                 {{ $row->phone }}
                             </th>
                             <th scope="row"
-                                class="px-3 py-4 font-medium whitespace-nowrap overflow-y-auto max-w-[150px] no-scroll">
+                                class="px-3 py-4 font-medium overflow-y-auto max-w-[150px] no-scroll">
                                 {{ $row->event->event_name }}
                             </th>
                             <th scope="row"
