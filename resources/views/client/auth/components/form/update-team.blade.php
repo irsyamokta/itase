@@ -1,5 +1,6 @@
 <form action="{{ route('team.update', $participants[0]->tim_id) }}" method="POST" enctype="multipart/form-data" class="mx-auto">
     @csrf
+    @method('patch')
     <div class="mb-5">
         @include('components.breadcrumb', [
             'links' => [['url' => route('team'), 'label' => 'Tim Kamu'], ['url' => '', 'label' => 'Update Tim']],

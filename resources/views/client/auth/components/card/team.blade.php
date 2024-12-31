@@ -9,10 +9,14 @@
                 Update
             </a>
             @if ($tim?->order?->payment_status == null || $tim?->order?->payment_status == 'Canceled')
-                <a href="{{ route('team.destroy') }}"
-                    class="bg-red-800 hover:bg-red-700 text-white text-center px-4 py-2 rounded-md">
-                    Hapus
-                </a>
+                <form action="{{ route('team.destroy', Auth::user()->id) }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button type="submit"
+                        class="bg-red-800 hover:bg-red-700 text-white text-center px-4 py-2 rounded-md">
+                        Hapus
+                    </button>
+                </form>
             @endif
         </div>
     </div>
@@ -105,8 +109,8 @@
                 <input type="text" placeholder="Nama Lengkap" name="name[]"
                     value="{{ $participants[2]->name ?? '' }}" readonly
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
-                <input type="email" placeholder="Email" name="email[]" value="{{ $participants[2]->email ?? '' }}"
-                    readonly
+                <input type="email" placeholder="Email" name="email[]"
+                    value="{{ $participants[2]->email ?? '' }}" readonly
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
                 <input type="text" placeholder="Universitas" name="university[]"
                     value="{{ $participants[2]->university ?? '' }}" readonly
