@@ -21,6 +21,12 @@ class DashboardController extends Controller
             })->paginate(20);
         } else {
             $orders = Order::with(['event', 'user'])->paginate(20);
+            if ($request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'orders' => $orders,
+                ]);
+            }
         }
 
         $participants = Participant::all()->count();
@@ -77,6 +83,14 @@ class DashboardController extends Controller
         $submissions = $submissions->paginate(20);
 
         $events = Event::all();
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'submissions' => $submissions,
+                'events' => $events,
+            ]);
+        }
 
         return view('admin.page.submission.index', compact('submissions', 'events'));
     }

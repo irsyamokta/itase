@@ -26,4 +26,34 @@ class PasswordController extends Controller
 
         return back()->with('status', 'password-updated');
     }
+
+    public function updateJson(Request $request)
+    {
+        $validated = $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', Password::defaults(), 'confirmed'],
+        ]);
+
+        try {
+            $request->user()->update([
+                'password' => Hash::make($validated['password']),
+            ]);
+
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Password berhasil diperbarui.',
+                ],
+                200,
+            );
+        } catch (\Exception $e) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => 'Terjadi kesalahan: ' . $e->getMessage(),
+                ],
+                500,
+            );
+        }
+    }
 }
