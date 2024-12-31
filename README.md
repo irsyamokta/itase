@@ -81,15 +81,19 @@ Ikuti langkah-langkah berikut untuk menginstal ITASE di lokal Anda:
    php artisan migrate --path=database/migrations/2024_12_29_035910_create_submissions_table.php
    php artisan migrate
    
-7. **Install NPM Assets**
+7. **Buat Storage Link**
+   ```bash
+   php artisan storage:link
+   
+8. **Install NPM Assets**
    ```bash
    npm run dev
    
-8. **Jalankan Server**
+9. **Jalankan Server**
    ```bash
    php artisan serve
 
-9. Akses aplikasi melalui browser di alamat http://localhost:8000.
+10. Akses aplikasi melalui browser di alamat http://localhost:8000.
 
 ## Issue
 Jika Anda menemui masalah atau membutuhkan bantuan lebih lanjut, silakan buka issue di GitHub atau hubungi saya.
