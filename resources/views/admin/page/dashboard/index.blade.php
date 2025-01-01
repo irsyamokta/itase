@@ -10,7 +10,7 @@
                 @include('admin.components.partials.header')
                 <main>
                     <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-5">
-                        @include('client.auth.components.card.countdown')
+                        <x-countdown/>
                         @include('admin.components.card.dashboard')
                         @include('admin.components.table.order')
                     </div>
