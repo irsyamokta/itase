@@ -46,7 +46,7 @@
             onSuccess: function(result) {
                 Swal.fire({
                     title: "Pembayaran Berhasil!",
-                    text: "Horeee pembayaran Anda berhasil...",
+                    text: "Terima kasih telah melakukan pembayaran",
                     icon: "success",
                     confirmButtonText: "OK",
                     confirmButtonColor: "#2E236C",
