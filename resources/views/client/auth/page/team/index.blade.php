@@ -11,6 +11,7 @@
                 <main>
                     <div class="mx-auto max-w-screen-2xl p-4 md:p-5">
                         @include('client.auth.components.card.team')
+                        <x-pdf-modal/>
                     </div>
                 </main>
             </div>

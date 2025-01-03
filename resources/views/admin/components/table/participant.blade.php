@@ -1,6 +1,7 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg border-2 border-accent">
     <x-searching :title="'Data Peserta Lomba'" :route="'participant.search'"/>
     <div class="px-5">
+        <x-pdf-modal />
         <table class="w-full text-sm text-center rtl:text-right text-gray-500">
             <thead class="text-xs text-white uppercase bg-primary">
                 <tr>
@@ -56,8 +57,7 @@
                                 {{ $row->role }}
                             </th>
                             <th scope="row" class="px-3 py-4 font-medium whitespace-nowrap">
-                                <a href="{{ asset('storage/' . $row->ktm) }}" class="text-purple-600 hover:underline"
-                                    download>
+                                <a href="#" class="text-purple-600 hover:underline" onclick="openPDF('{{ asset('storage/' . $row->ktm) }}')">
                                     Preview
                                 </a>
                             </th>

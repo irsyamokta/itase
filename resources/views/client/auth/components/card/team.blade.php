@@ -48,9 +48,8 @@
                     value="{{ $participants[0]->university ?? '' }}" readonly
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
                 <div class="flex flex-col items-start gap-2">
-                    <a href="{{ asset('storage/' . $participants[0]->ktm) }}" class="text-purple-600 hover:underline"
-                        download>
-                        Preview KTM
+                    <a href="#" class="text-purple-600 hover:underline" onclick="openPDF('{{ asset('storage/' . $participants[0]->ktm) }}')">
+                        Preview
                     </a>
                 </div>
             </div>
@@ -82,9 +81,8 @@
                     value="{{ $participants[1]->university ?? '' }}" readonly
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
                 <div class="flex flex-col items-start gap-2">
-                    <a href="{{ asset('storage/' . $participants[1]->ktm) }}" class="text-purple-600 hover:underline"
-                        download>
-                        Preview KTM
+                    <a href="#" class="text-purple-600 hover:underline" onclick="openPDF('{{ asset('storage/' . $participants[1]->ktm) }}')">
+                        Preview
                     </a>
                 </div>
             </div>
@@ -116,9 +114,8 @@
                     value="{{ $participants[2]->university ?? '' }}" readonly
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" />
                 <div class="flex flex-col items-start gap-2">
-                    <a href="{{ asset('storage/' . $participants[2]->ktm) }}" class="text-purple-600 hover:underline"
-                        download>
-                        Preview KTM
+                    <a href="#" class="text-purple-600 hover:underline" onclick="openPDF('{{ asset('storage/' . $participants[2]->ktm) }}')">
+                        Preview
                     </a>
                 </div>
             </div>
