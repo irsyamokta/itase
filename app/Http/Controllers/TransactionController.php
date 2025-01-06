@@ -13,7 +13,11 @@ class TransactionController extends Controller
     public function index($id)
     {
         $event = Event::find($id);
-        return view('client.auth.page.event.payment', compact('event'));
+        return view('client.auth.index', [
+            'page' => 'order',
+            'component' => 'page.client.payment',
+            'data' => compact('event'),
+        ]);
     }
 
     public function order(Request $request, $id)

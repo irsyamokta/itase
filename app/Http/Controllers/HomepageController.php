@@ -14,23 +14,31 @@ class HomepageController extends Controller
     public function index()
     {
         if (auth()->check()) {
-            $timId = Tim::where('leader_id', auth()->id())->value('id');
-            $nameTim = Tim::where('leader_id', auth()->id())->value('tim_name');
+            $userId = auth()->id();
+
+            $tim = Tim::where('leader_id', $userId)->first();
+            $timId = $tim?->id;
+            $nameTim = $tim?->tim_name;
 
             $submission = Submission::where('tim_id', $timId)->first();
 
-            $order = Order::where('user_id', auth()->id())
-            ->latest()
-            ->first();
-
-            $eventName = $order ? $order->event->event_name : null;
+            $order = Order::where('user_id', $userId)->latest()->first();
+            $eventName = $order?->event?->event_name;
+            $participants = Participant::where('tim_id', $timId)->get();
 
             if (!$timId) {
-                return view('client.auth.page.dashboard.index', compact('nameTim', 'eventName', 'timId', 'order'));
-            } else {
-                $participants = Participant::where('tim_id', $timId)->get();
-                return view('client.auth.page.dashboard.index', compact('nameTim', 'participants', 'submission', 'eventName', 'timId', 'order'));
+                return view('client.auth.index', [
+                    'page' => 'dashboard',
+                    'component' => 'page.client.dashboard',
+                    'data' => compact('nameTim', 'participants', 'submission', 'eventName', 'timId', 'order'),
+                ]);
             }
+
+            return view('client.auth.index', [
+                'page' => 'dashboard',
+                'component' => 'page.client.dashboard',
+                'data' => compact('nameTim', 'participants', 'submission', 'eventName', 'timId', 'order'),
+            ]);
         }
 
         return view('client.index');
@@ -40,9 +48,7 @@ class HomepageController extends Controller
     {
         $events = Event::all();
 
-        $order = Order::where('user_id', auth()->id())
-        ->latest('created_at')
-        ->first();
+        $order = Order::where('user_id', auth()->id())->latest('created_at')->first();
 
         $timId = Tim::where('leader_id', auth()->id())->value('id');
 
@@ -53,7 +59,11 @@ class HomepageController extends Controller
             ]);
         }
 
-        return view('client.auth.page.event.index', compact('events', 'order', 'timId'));
+        return view('client.auth.index', [
+            'page' => 'event',
+            'component' => 'page.client.event',
+            'data' => compact('events', 'order', 'timId'),
+        ]);
     }
 
     public function team()
@@ -64,22 +74,39 @@ class HomepageController extends Controller
             ->first();
 
         if (!$tim) {
-            return view('client.auth.page.team.not-registered');
+            return view('client.auth.index', [
+                'page' => 'team',
+                'component' => 'page.client.not-registered',
+                'data' => [],
+            ]);
         }
 
         $participants = Participant::where('tim_id', $tim->id)->get();
 
         if ($tim->registered == 1) {
-            return view('client.auth.page.team.index', compact('tim', 'participants'));
+            return view('client.auth.index', [
+                'page' => 'team',
+                'component' => 'page.client.team',
+                'data' => compact('tim', 'participants'),
+            ]);
         }
     }
 
     public function registerTeam()
     {
-        return view('client.auth.page.team.register');
+        return view('client.auth.index', [
+            'page' => 'team',
+            'component' => 'page.client.register',
+            'data' => [],
+        ]);
     }
 
-    public function setting(){
-        return view('client.auth.page.setting.index');
+    public function setting()
+    {
+        return view('client.auth.index', [
+            'page' => 'setting',
+            'component' => 'page.client.settings',
+            'data' => [],
+        ]);
     }
 }

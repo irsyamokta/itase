@@ -32,11 +32,19 @@ class MidtransController extends Controller
         }
 
         if (!$order) {
-            return view('client.auth.page.transaction.index', compact('orders', 'order', 'snapToken'));
+            return view('client.auth.index', [
+                'page' => 'transaction',
+                'component' => 'page.client.history',
+                'data' => compact('orders', 'order', 'snapToken'),
+            ]);
         }
 
         if (($order && $order->payment_status == 'Success') || $order->payment_status == 'Canceled') {
-            return view('client.auth.page.transaction.index', compact('orders', 'order', 'snapToken'));
+            return view('client.auth.index', [
+                'page' => 'transaction',
+                'component' => 'page.client.history',
+                'data' => compact('orders', 'order', 'snapToken'),
+            ]);
         }
 
         $params = [
@@ -60,7 +68,11 @@ class MidtransController extends Controller
         ];
         try {
             $snapToken = Snap::getSnapToken($params);
-            return view('client.auth.page.transaction.index', compact('snapToken', 'order', 'orders'));
+            return view('client.auth.index', [
+                'page' => 'transaction',
+                'component' => 'page.client.history',
+                'data' => compact('snapToken', 'order', 'orders'),
+            ]);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Failed to create transaction: ' . $e->getMessage()], 500);
         }

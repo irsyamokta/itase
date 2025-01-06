@@ -78,7 +78,11 @@ class ParticipantController extends Controller
         $participants = Participant::where('tim_id', $tim->id)->get();
 
         if ($tim->registered == 1 && $tim->leader_id == auth()->id()) {
-            return view('client.auth.page.team.update', compact('tim', 'participants'));
+            return view('client.auth.index', [
+                'page' => 'team',
+                'component' => 'page.client.update',
+                'data' => compact('tim', 'participants'),
+            ]);
         }
 
         if (request()->wantsJson()) {
