@@ -105,7 +105,7 @@ class HomepageController extends Controller
     {
         return view('client.auth.index', [
             'page' => 'setting',
-            'component' => 'page.client.settings',
+            'component' => 'settings',
             'data' => [],
         ]);
     }
