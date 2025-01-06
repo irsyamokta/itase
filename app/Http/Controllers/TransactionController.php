@@ -46,15 +46,6 @@ class TransactionController extends Controller
 
         $tim->update(['order_id' => $order->id]);
 
-        if ($request->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Order berhasil dibuat.',
-                'order' => $order,
-                'event' => $event,
-            ]);
-        }
-
         return redirect()->route('midtrans.payment')->with('success', 'Order berhasil dibuat.');
     }
 }

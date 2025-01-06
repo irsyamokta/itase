@@ -22,13 +22,6 @@ class ParticipantController extends Controller
                 'role.*' => 'required|string',
             ]);
 
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Data peserta berhasil disimpan.',
-                ]);
-            }
-
             $timId = DB::table('tims')->insertGetId([
                 'leader_id' => auth()->id(),
                 'tim_name' => $request->tim_name,
@@ -63,15 +56,6 @@ class ParticipantController extends Controller
         $tim = Tim::where('leader_id', $id)->first();
 
         if (!$tim) {
-            if (request()->wantsJson()) {
-                return response()->json(
-                    [
-                        'success' => false,
-                        'message' => 'Tim tidak ditemukan.',
-                    ],
-                    403,
-                );
-            }
             return redirect()->back()->with('error', 'Anda tidak memiliki akses ke tim ini.');
         }
 
@@ -85,15 +69,6 @@ class ParticipantController extends Controller
             ]);
         }
 
-        if (request()->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'data' => [
-                    'team' => $tim,
-                    'participants' => $participants,
-                ],
-            ]);
-        }
         return redirect()->back()->with('error', 'Akses tidak valid.');
     }
 
@@ -147,28 +122,9 @@ class ParticipantController extends Controller
                 ]);
             }
 
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Data tim dan peserta berhasil diperbarui.',
-                    'tim' => $tim,
-                    'participants' => $tim->participants,
-                ]);
-            }
-
             return redirect()->route('team')->with('success', 'Data tim dan peserta berhasil diperbarui.');
         } catch (\Exception $e) {
-
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Terjadi kesalahan: ' . $e->getMessage(),
-                ], 500);
-            }
-
-            return redirect()
-                ->back()
-                ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
 
@@ -184,26 +140,9 @@ class ParticipantController extends Controller
 
             $tim->delete();
 
-            if($request->wantsJson()) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Data tim dan peserta berhasil dihapus.',
-                ], 200);
-            }
-
             return redirect()->route('team')->with('success', 'Data tim dan peserta berhasil dihapus.');
         } catch (\Exception $e) {
-
-            if($request->wantsJson()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Data tim tidak ditemukan.',
-                ], 200);
-            }
-
-            return redirect()
-                ->back()
-                ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
 

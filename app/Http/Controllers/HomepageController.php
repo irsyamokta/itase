@@ -52,13 +52,6 @@ class HomepageController extends Controller
 
         $timId = Tim::where('leader_id', auth()->id())->value('id');
 
-        if ($request->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'events' => $events,
-            ]);
-        }
-
         return view('client.auth.index', [
             'page' => 'event',
             'component' => 'page.client.event',

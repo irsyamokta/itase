@@ -93,13 +93,6 @@ class MidtransController extends Controller
                 $order->save();
             }
 
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Status transaksi berhasil diperbarui!',
-                ]);
-            }
-
             return redirect()->route('order.detail')->with('success', 'Status transaksi berhasil diperbarui!');
         }
     }

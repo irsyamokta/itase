@@ -96,14 +96,6 @@ class DashboardController extends Controller
 
         $events = Event::all();
 
-        if ($request->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'submissions' => $submissions,
-                'events' => $events,
-            ]);
-        }
-
         return view('admin.index', [
             'page' => 'submission',
             'component' => 'page.admin.submission',

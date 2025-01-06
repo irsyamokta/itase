@@ -26,16 +26,6 @@ class SubmissionController extends Controller
                 'file' => $path,
             ]);
 
-            if ($request->wantsJson()) {
-                return response()->json(
-                    [
-                        'success' => true,
-                        'message' => 'Submission berhasil ditambahkan!',
-                        'submission' => $submission,
-                    ],
-                    201,
-                );
-            }
             return redirect()->back()->with('success', 'Submission berhasil ditambahkan!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());

@@ -37,32 +37,11 @@ class EventController extends Controller
             'banner' => $bannerPath,
         ]);
 
-        if ($request->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Event berhasil ditambahkan!',
-                'event' => $event,
-            ]);
-        }
-
         return redirect()->route('dashboard.event')->with('success', 'Event berhasil ditambahkan!');
     }
 
     public function view(Request $request, $id){
         $event = Event::find($id);
-
-        if($request->wantsJson()){
-            if(!$event){
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Event tidak ditemukan!',
-                ], 404);
-            }
-            return response()->json([
-                'success' => true,
-                'event' => $event,
-            ]);
-        }
 
         return view('admin.index', [
             'page' => 'event',
@@ -82,16 +61,6 @@ class EventController extends Controller
 
         $event = Event::find($id);
 
-        if (!$event) {
-            return response()->json(
-                [
-                    'success' => false,
-                    'message' => 'Event tidak ditemukan!',
-                ],
-                404,
-            );
-        }
-
         if ($request->hasFile('banner')) {
             $bannerPath = $request->file('banner')->store('banners', 'public');
             $event->banner = $bannerPath;
@@ -102,39 +71,14 @@ class EventController extends Controller
         $event->price = $validated['price'];
         $event->save();
 
-        if ($request->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Event berhasil diperbarui!',
-                'event' => $event,
-            ]);
-        }
-
         return redirect()->route('dashboard.event')->with('success', 'Event berhasil diperbarui!');
     }
 
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
         $event = Event::find($id);
 
-        if (!$event) {
-            return response()->json(
-                [
-                    'success' => false,
-                    'message' => 'Event tidak ditemukan!',
-                ],
-                404,
-            );
-        }
-
         $event->delete();
-
-        if ($request->wantsJson()) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Event berhasil dihapus!',
-            ]);
-        }
 
         return redirect()->route('dashboard.event')->with('success', 'Event berhasil dihapus!');
     }
