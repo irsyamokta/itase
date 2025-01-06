@@ -1,11 +1,11 @@
 @extends('index')
 @section('content')
-    @include('components.navbar')
-    @include('client.guest.sections.hero')
-    @include('client.guest.sections.about')
-    @include('client.guest.sections.event')
-    @include('client.guest.sections.timeline')
-    @include('client.guest.sections.faq')
-    @include('components.footer')
+    <x-navbar />
+    <x-sections.hero />
+    <x-sections.about />
+    <x-sections.event />
+    <x-sections.timeline />
+    <x-sections.faq />
+    <x-footer />
 @endsection
 
