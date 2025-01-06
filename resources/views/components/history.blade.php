@@ -16,7 +16,7 @@
     <div id="defaultTabContent">
         <div class="hidden p-4 bg-white rounded-lg" id="about" role="tabpanel" aria-labelledby="about-tab">
             @if ($order?->payment_status == 'Pending')
-                <x-card-payment :title="$order->event->event_name" :price="$order->event->price" :banner="$order->event->banner" :phone="$order->phone"
+                <x-cards.client.payment :title="$order->event->event_name" :price="$order->event->price" :banner="$order->event->banner" :phone="$order->phone"
                     :snapToken="$snapToken" :button="'Bayar Sekarang'" :readonly="true" />
             @else
                 <x-empty-transaction :title="'Tidak ada transaksi berjalan...'" :img="'img-transaction.png'" :button="'Kembali ke Dashboard'" :hidden="true" />
@@ -27,7 +27,7 @@
                 <x-empty-transaction :title="'Tidak ada riwayat transaksi...'" :img="'img-transaction.png'" :button="'Kembali ke Dashboard'" :hidden="true" />
             @else
                 @foreach ($orders as $item)
-                    <x-card-history :title="$item->event->event_name" :price="$item->event->price" :banner="$item->event->banner" :phone="$item->phone"
+                    <x-cards.client.history :title="$item->event->event_name" :price="$item->event->price" :banner="$item->event->banner" :phone="$item->phone"
                         :status="$item->payment_status" />
                 @endforeach
             @endif

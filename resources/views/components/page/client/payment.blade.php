@@ -5,5 +5,5 @@
 </div>
 <form action="{{ route('event.order', $data['event']->id) }}" method="POST">
     @csrf
-    <x-card-checkout :title="$data['event']->event_name" :price="$data['event']->price" :banner="$data['event']->banner" :button="'Lanjut Pembayaran'" :readonly="false" />
+    <x-cards.client.checkout :title="$data['event']->event_name" :price="$data['event']->price" :banner="$data['event']->banner" :button="'Lanjut Pembayaran'" :readonly="false" />
 </form>
