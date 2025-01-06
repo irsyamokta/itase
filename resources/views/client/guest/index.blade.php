@@ -1,11 +1,11 @@
 @extends('index')
 @section('content')
-    <x-navbar />
+    <x-partials.navbar />
     <x-sections.hero />
     <x-sections.about />
     <x-sections.event />
     <x-sections.timeline />
     <x-sections.faq />
-    <x-footer />
+    <x-partials.footer />
 @endsection
 
