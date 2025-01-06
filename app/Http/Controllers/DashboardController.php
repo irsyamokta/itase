@@ -34,13 +34,21 @@ class DashboardController extends Controller
         $submissions = Submission::all()->count();
         $revenue = Order::where('payment_status', 'Success')->sum('amount');
 
-        return view('admin.page.dashboard.index', compact('orders', 'participants', 'tims', 'submissions', 'revenue'));
+        return view('admin.index', [
+            'page' => 'dashboard',
+            'component' => 'page.admin.dashboard',
+            'data' => compact('orders', 'participants', 'tims', 'submissions', 'revenue'),
+        ]);
     }
 
     public function participant()
     {
         $participants = Participant::with('tim')->paginate(20);
-        return view('admin.page.participant.index', compact('participants'));
+        return view('admin.index', [
+            'page' => 'participant',
+            'component' => 'page.admin.participant',
+            'data' => compact('participants'),
+        ]);
     }
 
     public function event(Request $request)
@@ -54,7 +62,11 @@ class DashboardController extends Controller
             ]);
         }
 
-        return view('admin.page.event.index', compact('events'));
+        return view('admin.index', [
+            'page' => 'event',
+            'component' => 'page.admin.event',
+            'data' => compact('events'),
+        ]);
     }
 
     public function submission(Request $request)
@@ -92,10 +104,18 @@ class DashboardController extends Controller
             ]);
         }
 
-        return view('admin.page.submission.index', compact('submissions', 'events'));
+        return view('admin.index', [
+            'page' => 'submission',
+            'component' => 'page.admin.submission',
+            'data' => compact('submissions', 'events'),
+        ]);
     }
 
     public function setting(){
-        return view('admin.page.setting.index');
+        return view('admin.index', [
+            'page' => 'setting',
+            'component' => 'settings',
+            'data' => [],
+        ]);
     }
 }

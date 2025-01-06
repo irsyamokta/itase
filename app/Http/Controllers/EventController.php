@@ -9,7 +9,11 @@ class EventController extends Controller
 {
     public function index()
     {
-        return view('admin.page.event.store');
+        return view('admin.index', [
+            'page' => 'event',
+            'component' => 'page.admin.store',
+            'data' => [],
+        ]);
     }
 
     public function store(Request $request)
@@ -60,7 +64,11 @@ class EventController extends Controller
             ]);
         }
 
-        return view('admin.page.event.update', compact('event'));
+        return view('admin.index', [
+            'page' => 'event',
+            'component' => 'page.admin.update',
+            'data' => compact('event'),
+        ]);
     }
 
     public function update(Request $request, $id)
