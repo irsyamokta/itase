@@ -9,7 +9,7 @@
     @vite(['resources/css/style.css', 'resources/js/app.js'])
 </head>
 <body>
-    <x-partials.section :page="$page" :component="$component" :data="$data" />
+    <x-partials.section :page="$page" :component="$component" :data="$data" :route="'homepage.setting'" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
 </html>
