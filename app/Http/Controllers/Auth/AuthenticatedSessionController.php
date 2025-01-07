@@ -35,23 +35,6 @@ class AuthenticatedSessionController extends Controller
         }
     }
 
-    public function storeJson(LoginRequest $request)
-    {
-        $request->authenticate();
-
-        if (Auth::user()->role == 'participant') {
-            return response()->json([
-                'success' => true,
-                'message' => 'Login berhasil.',
-            ]);
-        } else {
-            return response()->json([
-                'success' => true,
-                'message' => 'Login admin berhasil.',
-            ]);
-        }
-    }
-
     /**
      * Destroy an authenticated session.
      */
