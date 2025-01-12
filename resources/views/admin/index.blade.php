@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,11 @@
     <title>Admin - ITASE 6.0</title>
     @vite(['resources/css/style.css', 'resources/js/app.js'])
 </head>
+
 <body>
     <x-partials.section :page="$page" :component="$component" :data="$data" :route="'dashboard.setting'" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>

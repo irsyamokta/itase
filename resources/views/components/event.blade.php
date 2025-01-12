@@ -22,11 +22,11 @@
                                 Edit
                             </button>
                         </a>
-                        <form action="{{ route('event.destroy', $id) }}" method="POST">
+                        <form action="{{ route('event.destroy', $id) }}" method="POST" id="delete-form-{{ $id }}">
                             @csrf
                             @method('delete')
-                            <button type="submit"
-                                class="bg-red-800 hover:bg-red-700 text-white text-center px-4 py-2 rounded-md">
+                            <button data-id="{{ $id }}" type="button"
+                                class="delete-btn bg-red-800 hover:bg-red-700 text-white text-center px-4 py-2 rounded-md">
                                 Hapus
                             </button>
                         </form>
@@ -48,3 +48,28 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            const eventId = this.getAttribute('data-id');
+            const form = document.getElementById(`delete-form-${eventId}`);
+
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#991b1b',
+                cancelButtonColor: '#2e236c',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
