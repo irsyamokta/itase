@@ -16,7 +16,7 @@
                     <th scope="col" class="px-3 py-3">
                         Phone
                     </th>
-                    <th scope="col" class="px-5 py-3 whitespace-nowrap">
+                    <th scope="col" class="px-5 py-3">
                         Kategori Lomba
                     </th>
                     <th scope="col" class="px-5 py-3">
@@ -24,6 +24,9 @@
                     </th>
                     <th scope="col" class="px-5 py-3">
                         Status Pembayaran
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        Tanggal Pembayaran
                     </th>
                 </tr>
             </thead>
@@ -35,7 +38,7 @@
                 @else
                     @foreach ($orders as $row)
                         <tr class="bg-white border-b">
-                            <th scope="row" class="px-3 py-4 font-medium whitespace-nowrap">
+                            <th scope="row" class="px-3 py-4 font-medium">
                                 {{ $row->transaction_id }}
                             </th>
                             <th scope="row" class="px-3 py-4 font-medium whitespace-nowrap">
@@ -59,6 +62,10 @@
                             <th scope="row"
                                 class="px-3 py-4 font-medium whitespace-nowrap overflow-y-auto max-w-[150px] no-scroll">
                                 {{ $row->payment_status }}
+                            </th>
+                            <th scope="row"
+                                class="px-3 py-4 font-medium whitespace-nowrap overflow-y-auto max-w-[150px] no-scroll">
+                                {{ $row->created_at }}
                             </th>
                         </tr>
                     @endforeach
